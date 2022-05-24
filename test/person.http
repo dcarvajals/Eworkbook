@@ -1,0 +1,115 @@
+@server = http://localhost:8080/eworkbook/webapis/personapis/
+
+####
+    #Registrar Persona :0
+    POST {{server}}register
+    Content-Type: application/json
+
+    {
+        "name":"ANTHONY ANTHONY",
+        "lastname":"PACHAY ESPINOZA",
+        "email":"anthony.pachay2017@uteq.edu.ec",
+        "password":"Abc123",
+        "provider":"native",
+        "base64":""
+    }
+
+####
+    #Inicio de sesión Persona
+    POST {{server}}logIn
+    Content-Type: application/json
+
+    {
+        "email":"anthony.pachay2017@uteq.edu.ec",
+        "password":"Abc123",
+        "provider":"native"
+    }
+
+    ####
+    #Actualizar datos de la Persona
+    POST {{server}}updatePerson
+    Content-Type: application/json
+
+    {
+        "name":"ANTHONY ABRAHAN",
+        "lastname":"PACHAY ESPINOZA",
+        "id_ciudad":"103-1807-562846",
+        "user_token":""
+    }
+
+    ####
+    #Soliticar código Persona
+    POST {{server}}requestCode
+    Content-Type: application/json
+    #flag = 1 cuando se envia el Token, 2 si es con e-mail
+    {
+        "flag":"1",
+        "user_token":"",
+        "email":"anthony.pachay2017@uteq.edu.ec"
+    }
+
+    ####
+    #Cambiar clave Persona
+    POST {{server}}changePassword
+    Content-Type: application/json
+    #flag = 1 cuando se envia el Token, 2 si es con e-mail
+    {
+        "flag":"1",
+        "code":"",
+        "password":"",
+        "user_token":"",
+        "email":"anthony.pachay2017@uteq.edu.ec"
+    }
+
+
+    ####
+    # Activar cuenta Persona
+    POST {{server}}activeAccount
+    Content-Type: application/json
+
+    {
+        "codigo":"",
+        "user_token":""
+    }
+
+####
+    #_ Persona
+    POST {{server}}changeImage
+    Content-Type: application/json
+
+    {
+        "imginfo":"",
+        "user_token":""
+    }
+
+
+####
+    #_ Persona
+    POST {{server}}getProfile
+    Content-Type: application/json
+
+    {
+        "user_token":""
+    }
+
+####
+    #_ Persona
+    POST {{server}}getUsers
+    Content-Type: application/json
+
+    {
+        "user_token":""
+    }
+
+
+####
+    #_ Persona
+    POST {{server}}stateUsers
+    Content-Type: application/json
+    #actvion = [ PROMOTE | DEGRADE | ACTIVATE | INACTIVATE ]
+    # id_person número
+    {
+        "user_token":"",
+        "id_person":"",
+        "action":"PROMOTE"
+    }

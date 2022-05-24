@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E74DFEB0-6217-3956-88BC-6BDE2E7BD00A" name="evaluation_categories">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>9D6BEF00-BDC2-4E3B-516C-0D7D2A9F6ADD</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_categorie" id="3D6B75D3-C4E1-A607-6EB5-B3E23F017E5C">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>B913491B-6B30-D100-F45E-D685EAC077AE</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name_categorie" id="1A468308-CDDC-053F-AE47-4F0D6FA05900">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>77A5485E-E7AD-48D3-5878-2C721A5265EE</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="state_categorie" id="3FFABFF2-3630-D18A-2266-8AC6FFD3B1E4">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>A3BAA482-469C-ACE8-70CE-8F3425A6168D</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2D3C5EB2-2D2D-4684-A142-A88AAEB3C894" name="evaluation_categories_PK">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>D39C8D7D-6B89-9E81-4AD2-FC16B2508813</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3D6B75D3-C4E1-A607-6EB5-B3E23F017E5C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

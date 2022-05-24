@@ -1,0 +1,231 @@
+<div class="m-4" ng-init="loadDocumentAdd()">
+    <div class="page-title d-flex flex-column me-5">
+        <!--begin::Title-->
+        <h5 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">Create a question</h5>
+        <!--end::Title-->
+        <!--begin::Breadcrumb-->
+        <ul class="breadcrumb fw-bold fs-7 small">
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">
+                <a ng-click="redirect('home')" class="text-muted text-hover-primary">Home</a>
+            </li>
+            <!--end::Item-->
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">
+                <a ng-click="redirect('questionbank')" class="text-muted text-hover-primary">Question</a>
+            </li>
+            <!--end::Item-->
+            <li class="breadcrumb-item text-muted">
+                Question Add
+            </li>
+            <!--end::Item-->
+        </ul>
+        <!--end::Breadcrumb-->
+    </div>
+    <div class="bg-white p-3 boder-personalice">
+    <form name="formAddQuestion">
+        <div class="form-group">
+            <label class="col-form-label col-form-label-sm">Selected question bank</label>
+            <select name="questionbank_q" ng-model="questionbank_q" required
+                    ng-class="(formAddQuestion.questionbank_q.$invalid &&
+                                                formAddQuestion.questionbank_q.$dirty) ?
+                                                'form-control form-control-sm is-invalid'
+                                                : 'form-control form-control-sm'"
+                    ng-options="questionBank.id_questiongroup  as questionBank.group_name
+                                for questionBank in tableQuestionBank">
+                <option value="-1">----</option>
+            </select>
+            <div class="invalid-feedback">
+                Please selected question bank
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-form-label-sm">Selected question type</label>
+            <select name="questionType_q" ng-model="questionType_q"
+                    ng-class="(formAddQuestion.questionType_q.$invalid &&
+                                                formAddQuestion.questionType_q.$dirty) ?
+                                                'form-control form-control-sm is-invalid'
+                                                : 'form-control form-control-sm'"
+                    ng-options="questionType.id_categorie  as questionType.name_categorie
+                                for questionType in tableQuestionType" required
+                    ng-change="loadJsonQuestionType(questionType_q)">
+                <option value="-1">----</option>
+            </select>
+            <div class="invalid-feedback">
+                Please selected question type
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-form-label-sm">Question name</label>
+            <input name="questionName_q" ng-model="questionName_q"
+                   ng-class="(formAddQuestion.questionName_q.$invalid &&
+                                               formAddQuestion.questionName_q.$dirty) ?
+                                               'form-control form-control-sm is-invalid'
+                                               : 'form-control form-control-sm'" type="text" required>
+            <div class="invalid-feedback">
+                Please enter the question name
+            </div>
+        </div>
+        <div class="" ng-show="validateQuestion()">
+            <div class="row">
+                <div class="col-9">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm">Question description</label>
+                        <textarea ng-blur="changeQuestionGeneral(question_q)"
+                                  ng-model="question_q" type="text"
+                                  class="form-control form-control-sm"></textarea>
+                        <div class="small text-danger">
+                            {{newQuestion.structure.statement_img.name !== undefined ?
+                                            'Selected File ' + newQuestion.structure.statement_img.name + '.' + newQuestion.structure.statement_img.ext :
+                                            newQuestion.structure.statement_video.name !== undefined ?
+                                                    'Selected File ' + newQuestion.structure.statement_video.name + '.' + newQuestion.structure.statement_video.ext :
+                                                    newQuestion.structure.statement_audio.name !== undefined ?
+                                                            'Selected File ' + newQuestion.structure.statement_audio.name + '.' + newQuestion.structure.statement_audio.ext
+                                                            : 'Selected file (png, jpg, mp4(video), mp3(sound))'}}
+                            <a href=""> Delete file </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm">Select file (optional)</label> <br>
+                        <input onchange="angular.element(this).scope().uploadFile(this, 1)"
+                               class="none" type="file" id="fileImage">
+                        <label for="fileImage" class="btn btn-light btn-sm rounded"> <i
+                                class="fas fa-image"></i> </label>
+                        <input onchange="angular.element(this).scope().uploadFile(this, 2)"
+                               class="none" type="file" id="fileVideo">
+                        <label for="fileVideo" class="btn btn-light btn-sm rounded"> <i
+                                class="fas fa-video"></i> </label>
+                        <input onchange="angular.element(this).scope().uploadFile(this, 3)"
+                               class="none" type="file" id="fileAudio">
+                        <label for="fileAudio" class="btn btn-light btn-sm rounded"> <i
+                                class="fas fa-volume-up"></i> </label>
+                    </div>
+                </div>
+            </div>
+            <h6> Items </h6>
+            <!--begin: formato html para pregunta => Multiple choices-->
+            <div class=""
+                 ng-repeat="dom_newQuestion in newQuestion.structure.itemsQuestions track by $index">
+                <div class="list p-3 boder-personalice mb-3">
+                    <label class="col-form-label col-form-label-sm">Select file (optional)</label> <br>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                        <label ng-click="addIemQuestion()" type="button"
+                               class="btn btn-sm btn-secondary"><i class="fas fa-plus"></i></label>
+                        <!--onchange="angular.element(this).scope().uploadFile(this, 1, dom_newQuestion)"-->
+                        <input onchange="angular.element(this).scope().uploadFileItem(this, 1)"
+                               class="none" type="file"
+                               id="{{'fileImage_item@' + $index}}">
+                        <label for="{{'fileImage_item@' + $index}}"
+                               class="btn btn-secondary btn-sm" type="button"> <i
+                                class="fas fa-image"></i> </label>
+                        <input onchange="angular.element(this).scope().uploadFileItem(this, 2)"
+                               class="none" type="file" id="{{'fileVideo_item@' + $index}}">
+                        <label type="button" for="{{'fileVideo_item@' + $index}}"
+                               class="btn btn-secondary btn-sm"> <i
+                                class="fas fa-video"></i> </label>
+                        <input onchange="angular.element(this).scope().uploadFileItem(this, 3)"
+                               class="none" type="file" id="{{'fileAudio_item@' + $index}}">
+                        <label type="button" for="{{'fileAudio_item@' + $index}}"
+                               class="btn btn-secondary btn-sm"> <i
+                                class="fas fa-volume-up"></i> </label>
+                    </div>
+                    <div class="small text-danger">
+                        {{dom_newQuestion.statement_img.name !== undefined ?
+                                        'Selected File ' + dom_newQuestion.statement_img.name + '.' + dom_newQuestion.statement_img.ext :
+                                        dom_newQuestion.statement_video.name !== undefined ?
+                                                'Selected File ' + dom_newQuestion.statement_video.name + '.' + dom_newQuestion.statement_video.ext :
+                                                dom_newQuestion.statement_audio.name !== undefined ?
+                                                        'Selected File ' + dom_newQuestion.statement_audio.name + '.' + dom_newQuestion.statement_audio.ext
+                                                        : 'Selected file (png, jpg, mp4(video), mp3(sound))'}}
+                        <a href=""> Delete file </a>
+                    </div>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="form-group mb-2">
+                                <textarea id="{{'ipItem' + ($index + 1)}}" ng-blur="changeTextItem($index)"
+                                          class="form-control form-control-sm" type="text"
+                                          placeholder="{{'Item ' + ($index + 1)}}"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group mb-2">
+                                <input id="{{'ipItemNote' + ($index + 1)}}" ng-blur="changeNoteItem($index)"
+                                       class="form-control form-control-sm" type="text"
+                                       placeholder="{{'Note ' + ($index + 1)}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shadow-sm p-3 boder-personalice" style="background: white">
+                        <h6> Possible answers </h6>
+
+                        <div ng-repeat="dom_responseQuestion in dom_newQuestion.responses track by $index">
+                            <label class="col-form-label col-form-label-sm">Select file (optional)</label>
+                            <br>
+                            <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                                <label ng-click="addPossibleResponse(dom_newQuestion)" type="button"
+                                       class="btn btn-sm btn-secondary"><i class="fas fa-plus"></i></label>
+                                <input onchange="angular.element(this).scope().uploadResponse(this, 1)"
+                                       class="none" type="file" id="{{'fileImage_resp@' +
+                                                                       newQuestion.structure.itemsQuestions.indexOf(dom_newQuestion) + '.' + $index}}">
+                                <label type="button" for="{{'fileImage_resp@' +
+                                                                newQuestion.structure.itemsQuestions.indexOf(dom_newQuestion) + '.' + $index}}"
+                                       class="btn btn-secondary btn-sm"> <i
+                                        class="fas fa-image"></i> </label>
+                                <input onchange="angular.element(this).scope().uploadResponse(this, 2)"
+                                       class="none" type="file" id="{{'fileVideo_resp@' +
+                                                                       newQuestion.structure.itemsQuestions.indexOf(dom_newQuestion) + '.' + $index}}">
+                                <label type="button" for="{{'fileVideo_resp@' +
+                                                                newQuestion.structure.itemsQuestions.indexOf(dom_newQuestion) + '.' + $index}}"
+                                       class="btn btn-secondary btn-sm"> <i
+                                        class="fas fa-video"></i> </label>
+                                <input onchange="angular.element(this).scope().uploadResponse(this, 3)"
+                                       class="none" type="file" id="{{'fileAudio_resp@' +
+                                                                       newQuestion.structure.itemsQuestions.indexOf(dom_newQuestion) + '.' + $index}}}}">
+                                <label type="button" for="{{'fileAudio_resp@' +
+                                                                newQuestion.structure.itemsQuestions.indexOf(dom_newQuestion) + '.' + $index}}}}"
+                                       class="btn btn-secondary btn-sm"> <i
+                                        class="fas fa-volume-up"></i> </label>
+                            </div>
+                            <div class="small text-danger">
+                                {{dom_responseQuestion.statement_img.name !== undefined ?
+                                                'Selected File ' + dom_responseQuestion.statement_img.name + '.' + dom_responseQuestion.statement_img.ext :
+                                                dom_responseQuestion.statement_video.name !== undefined ?
+                                                        'Selected File ' + dom_newQuestion.statement_video.name + '.' + dom_responseQuestion.statement_video.ext :
+                                                        dom_responseQuestion.statement_audio.name !== undefined ?
+                                                                'Selected File ' + dom_responseQuestion.statement_audio.name + '.' + dom_responseQuestion.statement_audio.ext
+                                                                : 'Selected file (png, jpg, mp4(video), mp3(sound))'}}
+                                <a href=""> Delete file </a>
+                            </div>
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        <textarea
+                                            id="{{'ipResponse' + newQuestion.structure.itemsQuestions.indexOf(dom_newQuestion) + '_' + $index}}"
+                                            ng-blur="changeTextResponse(newQuestion.structure.itemsQuestions.indexOf(dom_newQuestion), $index)"
+                                            class="form-control form-control-sm" type="text"
+                                            placeholder="{{'Possible answers ' + ($index + 1)}}"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-switch">
+                                        <input ng-click="changeStatusResponse(newQuestion.structure.itemsQuestions.indexOf(dom_newQuestion), $index)"
+                                               type="checkbox" class="custom-control-input" id="{{'flagCorect' +
+                                                                               newQuestion.structure.itemsQuestions.indexOf(dom_newQuestion) + '.' + $index}}}}">
+                                        <label class="custom-control-label" for="{{'flagCorect' +
+                                                                        newQuestion.structure.itemsQuestions.indexOf(dom_newQuestion) + '.' + $index}}}}">Correct
+                                            answers</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--end: formato html para pregunta => Multiple choices-->
+        </div>
+    </form>
+    </div>
+</div>

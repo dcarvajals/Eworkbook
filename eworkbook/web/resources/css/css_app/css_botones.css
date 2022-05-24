@@ -1,0 +1,93 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 19-jul-2021, 16:29:31
+    Author     : sarechuab.
+*/
+
+.boton-primario{
+    background: #4FC9DA;
+    color: white;
+    letter-spacing: 1.28px;
+    border-radius: 10px;
+}
+
+.boton-primario:focus, .boton-primario:hover{
+    background: #089EB6;
+    color: white !important;
+}
+
+.boton-primario-dos{
+    background: #DDF8FC;
+    color: #4FC9DA;
+    letter-spacing: 1.28px;
+    border-radius: 10px;
+}
+
+.boton-primario-dos:focus, .boton-primario-dos:hover{
+    background: #4FC9DA;
+    color: white !important;
+}
+
+.boton-secundario{
+    background: #ffd166;
+    color: black;
+    letter-spacing: 1.28px;
+    border-radius: 10px;
+}
+
+.boton-secundario:focus, .boton-secundario:hover{
+    background: #FBD993;
+    color: black !important;
+}
+
+.boton-terciario{
+    background: #073b4c;
+    color: white;
+    letter-spacing: 1.28px;
+    border-radius: 10px;
+}
+
+.boton-terciario:focus, .boton-terciario:hover{
+    background: #517381;
+    color: white !important;
+}
+
+.btn-actions{
+    background: #F8F6F2;
+    color: #8E887A;
+    letter-spacing: 1.28px;
+    border-radius: 10px;
+}
+
+.btn-actions:hover{
+    background: #DDF8FC;
+    color: #4FC9DA;
+}
+
+.btn-paginator{
+    background: white;
+    letter-spacing: 1.28px;
+    border-radius: 10px;
+}
+
+.btn-paginator:hover{
+    background: #DDF8FC;
+    color: #4FC9DA;
+}
+
+.btn-google {
+    background: #ea4335 !important;
+}
+
+.boder-personalice{
+    border-radius: 10px !important;
+}
+
+.posibleAnswer{
+    background: aliceblue;
+}
+

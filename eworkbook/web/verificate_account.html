@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Verificate Account</title>
+    <link rel="shortcut icon" href="resources/img/logo-app/logo.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="resources/css/css_library/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="resources/css/css_library/open-iconic-bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="resources/css/css_library/toastr.min.css" rel="stylesheet" type="text/css"/>
+    <link href="resources/css/css_app/css_botones.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="resources/css/css_library/all.min.css">
+    <link rel="stylesheet" href="resources/css/css_app/index-app.css">
+
+    <!--begin::Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap" rel="stylesheet">
+    <!--end::Fonts-->
+
+    <script src="resources/js/js_library/jquery.min.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/angular.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/store2.min.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/bootstrap.min.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/sweetalert2.min.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/toastr.min.js" type="text/javascript"></script>
+</head>
+<body ng-controller="ctrl_veraccount">
+<div class="container mt-5">
+    <img class="mb-5" src="resources/img/logo-app/logoApp2duvca.png" alt="logo" width="150">
+    <div class="m-auto w-50">
+        <h4> <strong> Verificate Account </strong> </h4>
+                <h5 class="{{message.status === 3 ? 'text-warning' : message.status === 4 ? 'text-danger' : 'text-sucess'}}">
+                    <i class="fas fa-exclamation-circle"></i>
+                    {{message.information}}
+                </h5>
+        <a href="login.html" type="submit" class="btn boton-secundario btn-sm rounded-pill" ng-disabled="form_login.$invalid">
+            Login
+        </a>
+        <button type="button" class="btn boton-primario btn-sm rounded-pill" ng-disabled="form_login.$invalid">
+            Resend email
+        </button>
+        <hr>
+    </div>
+</div>
+<script src="resources/js/js_global/js_global.js"></script>
+<script src="resources/js/js_global/jsAlertPersonalize.js"></script>
+<script type="text/javascript">
+
+    app = angular.module('app', []);
+    app.controller('ctrl_veraccount', function ($scope, $http) {
+
+        $scope.message = {status:3, information: "Verifying account"};
+
+        $(document).ready(() => {
+            let urlParams = new URLSearchParams(window.location.search);
+            let data_user = {
+                "codigo": urlParams.get('code'),
+                "email": urlParams.get('email')
+            };
+            verificateAccount(data_user);
+        });
+
+        function verificateAccount(json_param) {
+            $.ajax({
+                method: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                url: urlWebServicies + 'personapis/activeAccount',
+                data: JSON.stringify({
+                    "codigo": json_param.codigo,
+                    "email": json_param.email
+                }),
+                beforeSend: function (xhr) {
+                    loading();
+                },
+                success: function (data) {
+                    swal.close();
+                    console.log(data);
+                    $scope.$apply(() => {
+                        $scope.message.status = data.status;
+                        $scope.message.information = data.information;
+                    })
+                },
+                error: function (objXMLHttpRequest) {
+                    console.log("error: ", objXMLHttpRequest);
+                }
+            });
+        }
+
+    });
+</script>
+</body>
+</html>

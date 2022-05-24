@@ -1,0 +1,114 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C0DD8D0C-2BA9-CFA2-A262-71695A02261E" name="question_group">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:34:07 UTC</createdTime>
+<generatorID>FCFF596A-1B0C-6178-86AD-DF4F1A505463</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_questiongroup" id="6C1935ED-C89A-177C-1EB2-2FA73B2E4D69">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:34:07 UTC</createdTime>
+<generatorID>A5BA7A54-1EEA-8651-ABCE-26DE67B6FD38</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="group_name" id="B3A82549-0D03-20D0-6556-12894C59B274">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:34:07 UTC</createdTime>
+<generatorID>6DDC50B7-A7A2-7310-E034-AB44DF182812</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="group_description" id="F6141631-7303-99A5-A034-5575543CE68F">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:34:07 UTC</createdTime>
+<generatorID>E4DAAB6E-6726-DBB3-33D8-D66FB59578BD</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date_registration_group" id="BD861851-5B62-5AE3-3F5A-88E7B9CF42E4">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:34:07 UTC</createdTime>
+<generatorID>D086DEDF-0856-56AC-1024-DAD451597CE9</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT046</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="state_group" id="D6E8A6AF-F9AB-519F-4618-906DD360611E">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:34:07 UTC</createdTime>
+<generatorID>ACA0E835-6647-E06D-2C80-4E943B5CA33F</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="person_id_person" id="CA97FFFD-A09A-0196-6678-5E628812B6FF">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:34:07 UTC</createdTime>
+<generatorID>2F071858-9C72-63F0-D771-6E1C780B0761</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DD737960-2F0D-92AC-D287-66A1FEB6B3A5" referredColumn="443AF3D8-6758-54BB-19B5-EBE0741BC445"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C84D02F9-1C11-1A0E-6055-CD0178C23F06" name="question_group_PK">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:34:07 UTC</createdTime>
+<generatorID>6F4EF135-971D-C769-7B90-942B32781745</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6C1935ED-C89A-177C-1EB2-2FA73B2E4D69"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="076E69B8-358B-03EC-8444-BC9844106D27" name="question_group_person_FK">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:34:07 UTC</createdTime>
+<generatorID>F052481E-80C1-C526-B969-ABC089BA0710</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CA97FFFD-A09A-0196-6678-5E628812B6FF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

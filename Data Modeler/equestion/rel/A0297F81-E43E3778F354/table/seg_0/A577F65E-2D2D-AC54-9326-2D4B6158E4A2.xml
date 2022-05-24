@@ -1,0 +1,114 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A577F65E-2D2D-AC54-9326-2D4B6158E4A2" name="evaluation_questions">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>F9CBAC99-49C0-CCF6-0950-78087B4A83AA</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_evaluationquestions" id="2B27C14A-D521-9DFC-7A2D-65869E251C77">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>3C37DF1C-08C4-117E-28DD-B7F1907E81C2</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="qualification" id="A9041F9B-98F7-AA62-3491-C760D3F2DBF3">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>CD8749EF-6440-8EB8-1D39-100BB7BFB447</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date_register_evaluation_question" id="64A30A78-B0E3-2B5A-3407-FCC8E65BF37A">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>345A2D9B-029D-4524-3FC8-464018B52B38</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT046</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="evaluation_id_evaluation" id="0FFF34A6-D00D-DA24-2792-087A2D302B94">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>1B619FD6-3BA9-A13C-915F-1AF37ADF93DE</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E3FD3AAB-C5A8-1C6D-5F37-3F6C4078A943" referredColumn="DC82486F-FD33-1A40-E85B-6DECE6C9DD54"/>
+</associations>
+</Column>
+<Column name="questions_id_questions" id="EF49088B-0EDE-3FE5-E8E0-C6824A91B811">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>5DDE40A7-3C8E-6B3B-DFF5-933213FE8999</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="531B3942-E011-8BB2-3C35-8158670F52AB" referredColumn="27E863A3-8790-7861-221D-486D084E0C24"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7C94C101-1059-9429-B9F4-473583F80680" name="evaluation_questions_PK">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>378E7800-5C27-0C26-F262-F2A4D0AF1432</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2B27C14A-D521-9DFC-7A2D-65869E251C77"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="81182234-D954-A048-6A38-C94CF7121513" name="evaluation_questions_evaluation_FK">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>DDD47F37-C8C5-9F36-1D40-2FF1E9223458</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0FFF34A6-D00D-DA24-2792-087A2D302B94"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A66D2FE9-A4A5-B2DA-9919-8B0DB165187D" name="evaluation_questions_questions_FK">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>BED9D623-08B4-7652-4D8C-A8AD2B74BDD0</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EF49088B-0EDE-3FE5-E8E0-C6824A91B811"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

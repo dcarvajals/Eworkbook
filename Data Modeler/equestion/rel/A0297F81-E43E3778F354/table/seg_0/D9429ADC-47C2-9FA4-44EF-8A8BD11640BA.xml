@@ -1,0 +1,139 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D9429ADC-47C2-9FA4-44EF-8A8BD11640BA" name="evaluation">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>60FB091A-4C40-A954-352A-08E8A32CFAC7</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_evaluation" id="DC82486F-FD33-1A40-E85B-6DECE6C9DD54">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>473B250A-C8D1-0E08-52C6-230CA855ACF9</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name_evaluation" id="C8F2991B-5D8A-2E27-9FE2-434106ED04BD">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>B900795D-42C9-F29E-4ADE-229BADC1EA44</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="description_evaluation" id="E7833147-AFA0-33BB-5EA7-FDFC5A15D867">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>721B701A-0A0A-1C4F-4DC4-4831AD805ABE</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="state_evaluation" id="017310E3-0F35-C315-1A3E-9C6A65BF9363">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>C776F8ED-E814-1944-8789-2D97136A28A0</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date_registration_evaluation" id="61897C2E-BADB-F04F-B8D4-D0DEC82653E1">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>A282307F-E375-980A-460C-1E6E87CF3422</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT046</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date_finish_evaluation" id="75B82A6C-463E-8EB0-EC19-EDE95E3BECE0">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>85E6FA51-8108-1F6D-E556-B8F8560E695F</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT046</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="file_route_evaluation" id="DB116E32-E315-1C7E-FEFF-6AD88BF65B74">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>78D4977E-B4E9-7386-CCB6-9ADFC1CB4C6C</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="classroom_id_classroom" id="1C5C884E-A4D3-6194-A630-3F3FE47F1A2E">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>544EC0A0-0B40-3B5C-FB1A-C9F4FE2C8F94</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="35BE2E4B-F7F3-058E-D253-8CB410E130E1" referredColumn="4CC6E9C2-CDCE-AEE5-BCB4-A92464BFCE35"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="23004AAC-FC27-C2D5-1403-B5E7AFA177FC" name="evaluation_PK">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>9007CE42-05DA-AA5F-D497-F498FC905B26</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DC82486F-FD33-1A40-E85B-6DECE6C9DD54"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="64141D10-3683-2A74-5F20-8F4F9C4A6132" name="evaluation_classroom_FK">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>05F52ADE-8722-6F0B-096F-F646879CDD9B</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1C5C884E-A4D3-6194-A630-3F3FE47F1A2E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

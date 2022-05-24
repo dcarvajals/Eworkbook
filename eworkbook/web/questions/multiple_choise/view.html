@@ -1,0 +1,243 @@
+<div class="m-4">
+    <div class="page-title d-flex flex-column me-5">
+        <!--begin::Title-->
+        <h5 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">Questions bank</h5>
+        <!--end::Title-->
+        <!--begin::Breadcrumb-->
+        <ul class="breadcrumb fw-bold fs-7 small">
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">
+                <a ng-click="redirect('home')" class="text-muted text-hover-primary">Home</a>
+            </li>
+            <!--end::Item-->
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">
+                <a ng-click="redirect('questionbank')" class="text-muted text-hover-primary">Question</a>
+            </li>
+            <!--end::Item-->
+            <li class="breadcrumb-item text-muted">
+                Question View
+            </li>
+            <!--end::Item-->
+        </ul>
+        <!--end::Breadcrumb-->
+    </div>
+    <!--begin: lista de preguntas-->
+    <div class="p-4 border rounded bg-white" ng-init="loadDocument()">
+        <div class="form-group" ng-show="validateTEXT(viewJsonQuestion.structure.statement_text) && !validateJSON(viewJsonQuestion.structure.statement_img)
+                                 && !validateJSON(viewJsonQuestion.structure.statement_video) && !validateJSON(viewJsonQuestion.structure.statement_audio)">
+            <label class="col-form-label col-form-label-sm"> Instructions </label>
+            <label class="form-control form-control-sm h-auto">
+                {{viewJsonQuestion.structure.statement_text}} </label>
+        </div>
+        <div class="form-group"
+             ng-show="validateJSON(viewJsonQuestion.structure.statement_img)">
+            <label class="col-form-label col-form-label-sm"> Instructions </label>
+            <label class="form-control form-control-sm h-auto">
+                {{viewJsonQuestion.structure.statement_text}} </label>
+            <img ng-src="{{viewJsonQuestion.structure.statement_img.url}}" alt="">
+        </div>
+        <div class="form-group"
+             ng-show="validateJSON(viewJsonQuestion.structure.statement_video)">
+            <label class="col-form-label col-form-label-sm"> Instructions </label>
+            <label class="form-control form-control-sm h-auto">
+                {{viewJsonQuestion.structure.statement_text}} </label>
+            <video autoplay controls class="video-js mb-3 rounded">
+                <source src="{{viewJsonQuestion.structure.statement_video.url}}" type="video/mp4"/>
+            </video>
+        </div>
+        <div class="form-group"
+             ng-show="validateJSON(viewJsonQuestion.structure.statement_audio)">
+            <label class="col-form-label col-form-label-sm"> Instructions </label>
+            <label class="form-control form-control-sm h-auto">
+                {{viewJsonQuestion.structure.statement_text}} </label>
+            <button class="btn btn-primary rounded-pill btn-sm"
+                    ng-click="playPause(viewJsonQuestion.structure.statement_audio)">
+                <i class="far fa-play-circle"></i>
+                {{viewJsonQuestion.structure.statement_audio.name + "." + viewJsonQuestion.structure.statement_audio.ext}}
+            </button>
+        </div>
+        <div ng-repeat="dom_itemsQuestions in viewJsonQuestion.structure.itemsQuestions"
+             class="list p-3 boder-personalice mb-3" style="border: 1px solid #E3E6F0">
+            <div class="row"
+                 ng-show="validateTEXT(dom_itemsQuestions.statement_text) && !validateJSON(dom_itemsQuestions.statement_img)
+                                 && !validateJSON(dom_itemsQuestions.statement_video) && !validateJSON(dom_itemsQuestions.statement_audio)">
+                <div class="col-10">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm"> Question {{$index + 1}} </label>
+                        <label class="form-control form-control-sm h-auto">
+                            {{dom_itemsQuestions.statement_text}} </label>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm"> Points </label>
+                        <label class="form-control form-control-sm h-auto"> {{dom_itemsQuestions.note}} </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row"
+                 ng-show="validateJSON(dom_itemsQuestions.statement_img)">
+                <div class="col-10">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm"> Question {{$index + 1}} </label>
+                        <label class="form-control form-control-sm h-auto">
+                            {{dom_itemsQuestions.statement_text}} </label>
+                        <img class="boder-personalice" ng-src="{{dom_itemsQuestions.statement_img.url}}" alt="">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm"> Points </label>
+                        <label class="form-control form-control-sm h-auto"> {{dom_itemsQuestions.note}} </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row"
+                 ng-show="validateJSON(dom_itemsQuestions.statement_video)">
+                <div class="col-10">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm"> Question {{$index + 1}} </label>
+                        <label class="form-control form-control-sm h-auto">
+                            {{dom_itemsQuestions.statement_text}} </label>
+                        <video autoplay controls class="video-js mb-3 rounded">
+                            <source src="{{dom_itemsQuestions.statement_video.url}}" type="video/mp4"/>
+                        </video>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm"> Points </label>
+                        <label class="form-control form-control-sm h-auto"> {{dom_itemsQuestions.note}} </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row"
+                 ng-show="validateJSON(dom_itemsQuestions.statement_audio)">
+                <div class="col-10">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm"> Question {{$index + 1}} </label>
+                        <label class="form-control form-control-sm h-auto">
+                            {{dom_itemsQuestions.statement_text}} </label>
+
+                        <button class="btn btn-primary rounded-pill btn-sm"
+                                ng-click="playPause(dom_itemsQuestions.statement_audio)">
+                            <i class="far fa-play-circle"></i>
+                            {{dom_itemsQuestions.statement_audio.name + "." + dom_itemsQuestions.statement_audio.ext}}
+                        </button>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm"> Points </label>
+                        <label class="form-control form-control-sm h-auto"> {{dom_itemsQuestions.note}} </label>
+                    </div>
+                </div>
+            </div>
+            <div class="shadow-sm p-3 boder-personalice mb-3" style="background: white">
+                <div class="form-group p-3 boder-personalice mt-3 posibleAnswer"
+                     ng-repeat="dom_responses in dom_itemsQuestions.responses"
+                     ng-show="validateTEXT(dom_responses.statement_text) && !validateJSON(dom_responses.statement_img)
+                                 && !validateJSON(dom_responses.statement_video) && !validateJSON(dom_responses.statement_audio)">
+                    <div class="row">
+                        <div class="col-9">
+                            <label class="form-control form-control-sm bg-white"> Posible answer
+                                {{$index + 1}} </label>
+                            <label class="form-control form-control-sm h-auto">
+                                {{dom_responses.statement_text}} </label>
+                        </div>
+                        <div class="col-3">
+                            <label ng-show="dom_responses.flag_correct"
+                                   class="form-control form-control-sm h-auto bg-success text-white mt-0">
+                                <i class="fas fa-check"></i> Answer Correct
+                            </label>
+                            <label ng-show="!dom_responses.flag_correct"
+                                   class="form-control form-control-sm h-auto bg-danger text-white mt-0">
+                                <i class="fas fa-times"></i> Answer Incorrect
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group p-3 boder-personalice mt-3 posibleAnswer"
+                     ng-repeat="dom_responses in dom_itemsQuestions.responses"
+                     ng-show="validateJSON(dom_responses.statement_img)">
+                    <div class="row">
+                        <div class="col-9">
+                            <label class="form-control form-control-sm bg-white"> Posible answer
+                                {{$index + 1}} </label>
+                            <img class="boder-personalice" ng-src="{{dom_responses.statement_img.url}}" alt="">
+                            <label class="form-control form-control-sm mt-2 h-auto"
+                                   ng-show="validateTEXT(dom_responses.statement_text)">
+                                {{dom_responses.statement_text}} </label>
+                        </div>
+                        <div class="col-3">
+                            <label ng-show="dom_responses.flag_correct"
+                                   class="form-control form-control-sm h-auto bg-success text-white mt-0">
+                                <i class="fas fa-check"></i> Answer Correct
+                            </label>
+                            <label ng-show="!dom_responses.flag_correct"
+                                   class="form-control form-control-sm h-auto bg-danger text-white mt-0">
+                                <i class="fas fa-times"></i> Answer Incorrect
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group p-3 boder-personalice mt-3 posibleAnswer"
+                     ng-repeat="dom_responses in dom_itemsQuestions.responses"
+                     ng-show="validateJSON(dom_responses.statement_video)">
+                    <div class="row">
+                        <div class="col-9">
+                            <label class="form-control form-control-sm bg-white"> Posible answer
+                                {{$index + 1}} </label>
+                            <video autoplay controls class="video-js mb-3 rounded">
+                                <source src="{{dom_responses.statement_video.url}}" type="video/mp4"/>
+                            </video>
+                            <label class="form-control form-control-sm mt-2 h-auto"
+                                   ng-show="validateTEXT(dom_responses.statement_text)">
+                                {{dom_responses.statement_text}} </label>
+                        </div>
+                        <div class="col-3">
+                            <label ng-show="dom_responses.flag_correct"
+                                   class="form-control form-control-sm h-auto bg-success text-white mt-0">
+                                <i class="fas fa-check"></i> Answer Correct
+                            </label>
+                            <label ng-show="!dom_responses.flag_correct"
+                                   class="form-control form-control-sm h-auto bg-danger text-white mt-0">
+                                <i class="fas fa-times"></i> Answer Incorrect
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group p-3 boder-personalice mt-3 posibleAnswer"
+                     ng-repeat="dom_responses in dom_itemsQuestions.responses"
+                     ng-show="validateJSON(dom_responses.statement_audio)">
+                    <div class="row">
+                        <div class="col-9">
+                            <label class="form-control form-control-sm bg-white"> Posible answer
+                                {{$index + 1}} </label>
+                            <button class="btn btn-primary rounded-pill btn-sm"
+                                    ng-click="playPause(dom_responses.statement_audio)">
+                                <i class="far fa-play-circle"></i>
+                                {{dom_responses.statement_audio.name + "." + dom_responses.statement_audio.ext}}
+                            </button>
+                            <label class="form-control form-control-sm mt-2 h-auto"
+                                   ng-show="validateTEXT(dom_responses.statement_text)">
+                                {{dom_responses.statement_text}} </label>
+                        </div>
+                        <div class="col-3">
+                            <label ng-show="dom_responses.flag_correct"
+                                   class="form-control form-control-sm h-auto bg-success text-white mt-0">
+                                <i class="fas fa-check"></i> Answer Correct
+                            </label>
+                            <label ng-show="!dom_responses.flag_correct"
+                                   class="form-control form-control-sm h-auto bg-danger text-white mt-0">
+                                <i class="fas fa-times"></i> Answer Incorrect
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

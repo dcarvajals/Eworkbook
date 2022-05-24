@@ -1,0 +1,190 @@
+/**
+ * @uthor: dcarvajals
+ */
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.opacity-d{
+    width: 100%;
+    background: #352278;
+    height: 25rem;
+    position: absolute;
+    opacity: 0.4;
+}
+
+
+/*estilo para el logo de la app*/
+.logoDuvca{
+    position: absolute;
+    margin-top: -5px;
+    cursor: pointer;
+}
+
+/*clase para estilos del menu*/
+.menu-header{
+    height: 25rem;
+    padding: 30px 0px 50px 0px;
+    background-image: url(../../img/img-app/fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*items del menu de informacion*/
+.itemDuvca{
+    color: white !important
+}
+
+.itemDuvca:hover{
+    background: white;
+    border-radius: 50px;
+    color: #352278 !important
+}
+
+.login{
+    padding: 20px;
+    background: white;
+    width: 20rem;
+}
+
+/*alteracion en un atributo del container de bootstrap*/
+.con-d{
+    margin-top: -11rem;
+}
+
+.center-d{
+    text-align: center;
+}
+
+.button-d{
+    background: #352278;
+    color: white;
+    box-shadow: 0 4px #bd5334;
+    letter-spacing: 1.28px;
+    border-radius: 2px 2px 0 0;
+    transition: box-shadow .1s ease-out,transform .1s ease-out;
+}
+
+.button-d:focus, .button-d:hover{
+    background: #352278;
+    color: white !important;
+    box-shadow: 0 2px #bd5334;
+    transform: translateY(2px);
+}
+
+/*boton active*/
+.button-active{
+    background: #bd5334;
+    color: white;
+    box-shadow: 0 4px #bd5334;
+    letter-spacing: 1.28px;
+    border-radius: 2px 2px 0 0;
+    transition: box-shadow .1s ease-out,transform .1s ease-out;
+}
+
+.button-active:focus, .button-active:hover{
+    background: #bd5334;
+    color: white !important;
+    box-shadow: 0 2px #bd5334;
+    transform: translateY(2px);
+}
+
+/*boton secundario*/
+.button-ds{
+    background: #bd5334;
+    color: white;
+    box-shadow: 0 4px #dbab35;
+    letter-spacing: 1.28px;
+    border-radius: 2px 2px 0 0;
+    transition: box-shadow .1s ease-out,transform .1s ease-out;
+}
+
+.button-ds:focus, .button-ds:hover{
+    background: #bd5334;
+    color: white !important;
+    box-shadow: 0 2px #dbab35;
+    transform: translateY(2px);
+}
+
+/*boton terciario*/
+.button-dt{
+    background: #dbab35;
+    color: black;
+    box-shadow: 0 4px #bd5334;
+    letter-spacing: 1.28px;
+    border-radius: 2px 2px 0 0;
+    transition: box-shadow .1s ease-out,transform .1s ease-out;
+}
+
+.button-dt:focus, .button-dt:hover{
+    background: #dbab35;
+    color: black !important;
+    box-shadow: 0 2px #bd5334;
+    transform: translateY(2px);
+}
+
+.info-d{
+    position:absolute;
+    bottom: 0;
+    text-align: center;
+}
+
+.info-d img{
+    margin-bottom: 2rem;
+}
+
+li{cursor: pointer !important;}
+
+.headerpro{
+    display: block;
+    text-align: inherit;
+    word-spacing: inherit;
+}
+
+/* Tamaño del scroll */
+.scroll::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Estilos barra (thumb) de scroll */
+.scroll::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.scroll::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}
+
+.scroll::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+/* Estilos track de scroll */
+.scroll::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+}
+
+.scroll::-webkit-scrollbar-track:hover,
+.scroll::-webkit-scrollbar-track:active {
+    background: #d4d4d4;
+}
+
+.list{
+    border-radius: 10px; background: #f8f9fc !important;
+}
+
+@media screen and (max-width: 750px) {
+    .headerpro{
+        display: grid;
+        text-align: center;
+        word-spacing: 1rem;
+    }
+}

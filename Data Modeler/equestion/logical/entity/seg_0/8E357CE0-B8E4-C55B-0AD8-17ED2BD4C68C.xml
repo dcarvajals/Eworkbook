@@ -1,0 +1,100 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="8E357CE0-B8E4-C55B-0AD8-17ED2BD4C68C" name="responses">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 06:43:21 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="E45FE97E-3B86-8254-B3AD-6B43BE2AB9B9" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_response" id="ED301511-A256-6C5F-2BFE-9378C31B86AB">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 06:43:43 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="E45FE97E-3B86-8254-B3AD-6B43BE2AB9B9" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="state_response" id="3F5CA6D3-5E5A-FDDC-AEFE-B54D74804374">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 06:43:56 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="E45FE97E-3B86-8254-B3AD-6B43BE2AB9B9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="date_register_response" id="E55038D7-9B42-A87A-F0A6-2351DD5288E8">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 06:44:27 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="E45FE97E-3B86-8254-B3AD-6B43BE2AB9B9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT046</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="answer_options" id="0371D44D-247B-792D-EDA1-ABEB635589BA">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 06:57:42 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="E45FE97E-3B86-8254-B3AD-6B43BE2AB9B9" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>47823B89-BECE-2D4A-B641-EE3BE6149078</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_questions" id="47280C77-4CBE-A131-46BD-111D8FED04B9">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 06:45:43 UTC</createdTime>
+<generatorID>9FE9C8A5-A3A1-372D-219E-8D0E664E9081</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="E45FE97E-3B86-8254-B3AD-6B43BE2AB9B9" value="true"/>
+</engineerTo>
+<referedAttribute>9E60FC54-E5B7-6366-D55E-FCC280D38CB6</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="8FE2C5AB-D422-B594-2E0B-CCE578A20071" name="responses PK">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 06:43:35 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="E45FE97E-3B86-8254-B3AD-6B43BE2AB9B9" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>ED301511-A256-6C5F-2BFE-9378C31B86AB</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ProcessModel class="oracle.dbtools.crest.model.design.process.ProcessModel" name="Process Model" id="D1D6ED42-6AF7-19F6-A3D0-6C9FF8BABE7D">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-28 20:04:34 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</ProcessModel>

@@ -1,0 +1,129 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A96FE48B-12F2-CDEE-77AC-0A42813C07E3" name="person_classroom">
+<createdBy>geova</createdBy>
+<createdTime>2021-12-09 04:01:21 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_person_classroom" id="A2EF6A55-5209-B1C4-729B-FC6514109B60">
+<createdBy>geova</createdBy>
+<createdTime>2021-12-09 04:25:43 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="state_classroom_person" id="C5A65105-2546-2DC5-C8F3-682A0A19060A">
+<createdBy>geova</createdBy>
+<createdTime>2021-12-09 04:28:34 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_person" id="B8DEF5AF-6BEE-4F7B-3AC2-7D1AFE45BB0D">
+<createdBy>geova</createdBy>
+<createdTime>2021-12-09 04:29:14 UTC</createdTime>
+<generatorID>0306C203-18CB-356B-9BD5-56244F3EB168</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<referedAttribute>369EB371-399E-6A46-5154-F2D4DD23E0FB</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_classroom " id="67DE791B-7E3E-0CD6-07C5-0FC7154AE467">
+<createdBy>geova</createdBy>
+<createdTime>2021-12-09 04:29:27 UTC</createdTime>
+<generatorID>67F5A253-2321-5CCC-EB40-40050BD65DF5</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<referedAttribute>39FB829B-7D44-953E-13A9-C0081592E492</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="state_student_classroom" id="E40CD6E8-6D00-695D-078B-390BAC7B765E">
+<createdBy>geova</createdBy>
+<createdTime>2021-12-11 07:15:00 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="state_person_classroom" id="2F3B57D4-6FB0-F0BF-3F79-90768BCB1656">
+<createdBy>geova</createdBy>
+<createdTime>2021-12-11 07:16:18 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="date_register_person_classroom" id="234D2488-FF87-7849-CDC8-460DF47434A8">
+<createdBy>geova</createdBy>
+<createdTime>2021-12-11 07:15:11 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT046</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C5AFAE0B-20D8-732A-FE61-1716EB881CAD" name="person_classroom PK">
+<createdBy>geova</createdBy>
+<createdTime>2021-12-09 04:27:39 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>A2EF6A55-5209-B1C4-729B-FC6514109B60</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

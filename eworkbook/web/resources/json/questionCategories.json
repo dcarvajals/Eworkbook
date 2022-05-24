@@ -1,0 +1,25 @@
+{
+  "HUQowzOCa4w=": {
+    "tittle": "Multiple choices",
+    "structure": {
+      "statement_text": "",
+      "statement_img": {},
+      "statement_video": {},
+      "statement_audio": {},
+      "itemsQuestions": [{
+        "item_text": "",
+        "note": "",
+        "statement_img": {},
+        "statement_video": {},
+        "statement_audio": {},
+        "responses": [{
+          "responses_text": "",
+          "statement_img": {},
+          "statement_video": {},
+          "statement_audio" : {},
+          "flag_correct": false
+        }]
+      }]
+    }
+  }
+}

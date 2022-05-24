@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9D6BEF00-BDC2-4E3B-516C-0D7D2A9F6ADD" name="evaluation_categories">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 05:23:17 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="51F8403D-D2E4-D628-E23C-9AABCD231857" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_categorie" id="B913491B-6B30-D100-F45E-D685EAC077AE">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 05:30:05 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="51F8403D-D2E4-D628-E23C-9AABCD231857" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name_categorie" id="77A5485E-E7AD-48D3-5878-2C721A5265EE">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 05:30:22 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="51F8403D-D2E4-D628-E23C-9AABCD231857" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="state_categorie" id="A3BAA482-469C-ACE8-70CE-8F3425A6168D">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 05:33:50 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="51F8403D-D2E4-D628-E23C-9AABCD231857" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D39C8D7D-6B89-9E81-4AD2-FC16B2508813" name="evaluation_categories PK">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 05:30:19 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="51F8403D-D2E4-D628-E23C-9AABCD231857" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B913491B-6B30-D100-F45E-D685EAC077AE</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

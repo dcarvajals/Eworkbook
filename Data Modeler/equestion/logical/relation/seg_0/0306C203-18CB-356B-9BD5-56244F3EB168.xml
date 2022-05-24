@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="person_person_classroom" directorySegmentName="seg_0" id="0306C203-18CB-356B-9BD5-56244F3EB168">
+<createdBy>geova</createdBy>
+<createdTime>2021-12-09 04:29:14 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<sourcePk>D7A9C2AB-1EFD-1728-7B9A-96B8F1E247FC</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>8AEC7619-F7F5-0FD1-61D0-B3B1319DF738</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>A96FE48B-12F2-CDEE-77AC-0A42813C07E3</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

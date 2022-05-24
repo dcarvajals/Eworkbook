@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="p_q" directorySegmentName="seg_0" id="D0CE3627-1AE7-E629-C281-0EEB9BE64DC6">
+<createdBy>Usuario</createdBy>
+<createdTime>2022-03-27 01:03:56 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<sourcePk>D7A9C2AB-1EFD-1728-7B9A-96B8F1E247FC</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>8AEC7619-F7F5-0FD1-61D0-B3B1319DF738</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>35989CCE-9A92-E1B5-D7C5-C2B25983E816</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

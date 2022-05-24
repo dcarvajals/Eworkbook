@@ -1,0 +1,184 @@
+<!--begin: modal para unirse a una nueva clase -->
+<div class="modal fade" id="modalAddJoinClass" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <form name="formAddJoinClass" ng-submit="appJoinClass(formAddJoinClass)">
+                <div class="modal-header">
+                    <h5 class="modal-title">Join class</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm">Code class</label>
+                        <input name="codeClass" type="text"
+                               ng-model="codeClass"
+                               ng-class="(formAddJoinClass.codeClass.$invalid &&
+                                                       formAddJoinClass.codeClass.$dirty) ?
+                                                       'form-control form-control-sm is-invalid'
+                                                       : 'form-control form-control-sm'" maxlength="6" required/>
+                        <div class="invalid-feedback">
+                            Please enter the code class
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-danger boder-personalice"
+                            ng-click="closeModalJoinClass()">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-sm btn-primary boder-personalice"
+                            ng-disabled="formAddJoinClass.$invalid">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--end: modal para unirse a una nueva clase -->
+
+<div class="m-3 m-md-5">
+    <div class="page-title d-flex flex-column me-5">
+        <!--begin::Title-->
+        <h5 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">Join Class</h5>
+        <!--end::Title-->
+        <!--begin::Breadcrumb-->
+        <ul class="breadcrumb fw-bold fs-7 small">
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">
+                <a href="app.html#!/home" class="text-muted text-hover-primary">Home</a>
+            </li>
+            <!--end::Item-->
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">Join Class</li>
+            <!--end::Item-->
+        </ul>
+        <!--end::Breadcrumb-->
+    </div>
+
+    <!--begin: lista de clases unidas del usuario-->
+    <div class="p-3 border list">
+
+        <div ng-show="tableJoinClass.length === 0" class="text-center w-100">
+            <h2 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">Welcome!</h2>
+            <p class="text-gray-800 fs-4 fw-bold mb-10">There are not join class added yet.
+                <br>Kickstart your CRM by adding a your first join class</p>
+            <button class="btn boton-primario" ng-click="openModalJoinClass()"> Join Class </button>
+
+            <div class="text-center px-4">
+                <img class="mw-100" alt="" src="resources/img/img-app/newObject.png" width="400">
+            </div>
+        </div>
+
+        <div ng-show="tableJoinClass.length > 0">
+            <div class="headerpro">
+                <div class="float-right">
+                    <div class="flex-column" style="letter-spacing: 0.5rem;">
+                        <button class="btn boton-primario btn-sm" ng-click="openModalJoinClass()"
+                                ng-show="countRowsSelected === 0">
+                            Join Class
+                        </button>
+                        <span class="text-dark mr-2 small" ng-show="countRowsSelected > 0"
+                              style="letter-spacing: normal">
+                        {{countRowsSelected}} Selected </span>
+                        <button class="btn btn-danger btn-sm boder-personalice" ng-show="countRowsSelected > 0"
+                                ng-click="deleteAllSelected()">
+                            Delete Selected
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col col-xl-3 col-md-6 p-0">
+                    <div class="form-group">
+                        <div class="input-group mt-2 mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-search"></i></div>
+                            </div>
+                            <input type="text" class="form-control form-control-sm" id="inlineFormInputGroup"
+                                   placeholder="Search period">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="table-responsive-xl scroll">
+                <table class="table table-sm small mb-0">
+                    <thead>
+                    <tr>
+                        <th scope="col">
+                            <div class="custom-control custom-checkbox">
+                                <input ng-model="periodAll"
+                                       type="checkbox" class="custom-control-input" id="periodAllId"
+                                       ng-click="selectedAllPeriod()">
+                                <label class="custom-control-label" for="periodAllId"></label>
+                            </div>
+                        </th>
+                        <th scope="col">CLASS CODE</th>
+                        <th scope="col">CLASS NAME</th>
+                        <th scope="col">CLASS DESCRIPTION</th>
+                        <th scope="col" class="text-right">ACTION</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="dom_tableJoinClass in tableJoinClass">
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input"
+                                       id="{{'check_' + dom_tableJoinClass.id_period}}"
+                                       ng-click="selectedRowDelete(dom_tablePeriod.id_period)">
+                                <label class="custom-control-label"
+                                       for="{{'check_' + dom_tableJoinClass.id_period}}"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="badge badge-primary">{{dom_tableJoinClass.code_class}}</span>
+                        </td>
+                        <td>{{dom_tableJoinClass.name_class}}</td>
+                        <td>{{dom_tableJoinClass.class_description}}</td>
+                        <td class="text-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-actions btn-sm boder-personalice dropdown-toggle"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false"
+                                        id="{{'btn_' + dom_tablePeriod.id_period}}">
+                                    Actions
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right shadow"
+                                     aria-labelledby="{{'btn_' + dom_tablePeriod.id_period}}">
+                                    <button class="dropdown-item" ng-click="selectedRow(dom_tablePeriod)">Update
+                                    </button>
+                                    <button class="dropdown-item" ng-click="openModalPeriodDetails(dom_tablePeriod)">
+                                        View
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-4 float-right">
+                <div class="flex-column" style="letter-spacing: 0.5rem;">
+                    <button class="btn btn-sm"><i class="fas fa-angle-left"></i></button>
+                    <button class="btn boton-primario btn-sm"> 1</button>
+                    <button class="btn btn-paginator btn-sm"> 2</button>
+                    <button class="btn btn-paginator btn-sm"> 3</button>
+                    <button class="btn btn-paginator btn-sm"> 4</button>
+                    <button class="btn btn-sm"><i class="fas fa-angle-right"></i></button>
+                </div>
+            </div>
+            <div class="mt-4 col-3 col-xl-1 col-md-1 p-0">
+                <div class="form-group">
+                    <select class="form-control form-control-sm">
+                        <option value="">10</option>
+                        <option value="">20</option>
+                        <option value="">30</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!--end: lsita de periodos-->
+    </div>
+</div>

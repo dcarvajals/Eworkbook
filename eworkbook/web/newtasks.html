@@ -1,0 +1,554 @@
+<!--begin: modal para visualizar las preguntas-->
+<div class="modal fade" id="modalViewQuestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" ng-show="!flagUpdate">View Question</h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" ng-show="validateTEXT(viewJsonQuestion.structure.statement_text) && !validateJSON(viewJsonQuestion.structure.statement_img)
+                                 && !validateJSON(viewJsonQuestion.structure.statement_video) && !validateJSON(viewJsonQuestion.structure.statement_audio)">
+                    <label class="col-form-label col-form-label-sm"> Instructions </label>
+                    <label class="form-control form-control-sm h-auto">
+                        {{viewJsonQuestion.structure.statement_text}} </label>
+                </div>
+                <div class="form-group"
+                     ng-show="validateJSON(viewJsonQuestion.structure.statement_img)">
+                    <label class="col-form-label col-form-label-sm"> Instructions </label>
+                    <label class="form-control form-control-sm h-auto">
+                        {{viewJsonQuestion.structure.statement_text}} </label>
+                    <img ng-src="{{viewJsonQuestion.structure.statement_img.url}}" alt="">
+                </div>
+                <div class="form-group"
+                     ng-show="validateJSON(viewJsonQuestion.structure.statement_video)">
+                    <label class="col-form-label col-form-label-sm"> Instructions </label>
+                    <label class="form-control form-control-sm h-auto">
+                        {{viewJsonQuestion.structure.statement_text}} </label>
+                    <video autoplay controls class="video-js mb-3 rounded">
+                        <source src="{{viewJsonQuestion.structure.statement_video.url}}" type="video/mp4"/>
+                    </video>
+                </div>
+                <div class="form-group"
+                     ng-show="validateJSON(viewJsonQuestion.structure.statement_audio)">
+                    <label class="col-form-label col-form-label-sm"> Instructions </label>
+                    <label class="form-control form-control-sm h-auto">
+                        {{viewJsonQuestion.structure.statement_text}} </label>
+                    <button class="btn btn-primary rounded-pill btn-sm"
+                            ng-click="playPause(viewJsonQuestion.structure.statement_audio)">
+                        <i class="far fa-play-circle"></i>
+                        {{viewJsonQuestion.structure.statement_audio.name + "." + viewJsonQuestion.structure.statement_audio.ext}}
+                    </button>
+                </div>
+                <div ng-repeat="dom_itemsQuestions in viewJsonQuestion.structure.itemsQuestions"
+                     class="list p-3 boder-personalice mb-3" style="border: 1px solid #E3E6F0">
+                    <div class="row"
+                         ng-show="validateTEXT(dom_itemsQuestions.statement_text) && !validateJSON(dom_itemsQuestions.statement_img)
+                                 && !validateJSON(dom_itemsQuestions.statement_video) && !validateJSON(dom_itemsQuestions.statement_audio)">
+                        <div class="col-10">
+                            <div class="form-group">
+                                <label class="col-form-label col-form-label-sm"> Question {{$index + 1}} </label>
+                                <label class="form-control form-control-sm h-auto">
+                                    {{dom_itemsQuestions.statement_text}} </label>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label class="col-form-label col-form-label-sm"> Note {{$index + 1}} </label>
+                                <label class="form-control form-control-sm h-auto"> {{dom_itemsQuestions.note}} </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"
+                         ng-show="validateJSON(dom_itemsQuestions.statement_img)">
+                        <div class="col-10">
+                            <div class="form-group">
+                                <label class="col-form-label col-form-label-sm"> Question {{$index + 1}} </label>
+                                <label class="form-control form-control-sm h-auto">
+                                    {{dom_itemsQuestions.statement_text}} </label>
+                                <img class="boder-personalice" ng-src="{{dom_itemsQuestions.statement_img.url}}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label class="col-form-label col-form-label-sm"> Note {{$index + 1}} </label>
+                                <label class="form-control form-control-sm h-auto"> {{dom_itemsQuestions.note}} </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"
+                         ng-show="validateJSON(dom_itemsQuestions.statement_video)">
+                        <div class="col-10">
+                            <div class="form-group">
+                                <label class="col-form-label col-form-label-sm"> Question {{$index + 1}} </label>
+                                <label class="form-control form-control-sm h-auto">
+                                    {{dom_itemsQuestions.statement_text}} </label>
+                                <video autoplay controls class="video-js mb-3 rounded">
+                                    <source src="{{dom_itemsQuestions.statement_video.url}}" type="video/mp4"/>
+                                </video>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label class="col-form-label col-form-label-sm"> Note {{$index + 1}} </label>
+                                <label class="form-control form-control-sm h-auto"> {{dom_itemsQuestions.note}} </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"
+                         ng-show="validateJSON(dom_itemsQuestions.statement_audio)">
+                        <div class="col-10">
+                            <div class="form-group">
+                                <label class="col-form-label col-form-label-sm"> Question {{$index + 1}} </label>
+                                <label class="form-control form-control-sm h-auto">
+                                    {{dom_itemsQuestions.statement_text}} </label>
+
+                                <button class="btn btn-primary rounded-pill btn-sm"
+                                        ng-click="playPause(dom_itemsQuestions.statement_audio)">
+                                    <i class="far fa-play-circle"></i>
+                                    {{dom_itemsQuestions.statement_audio.name + "." + dom_itemsQuestions.statement_audio.ext}}
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label class="col-form-label col-form-label-sm"> Note {{$index + 1}} </label>
+                                <label class="form-control form-control-sm h-auto"> {{dom_itemsQuestions.note}} </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shadow-sm p-3 boder-personalice mb-3" style="background: white">
+                        <div class="form-group p-3 boder-personalice mt-3 posibleAnswer"
+                             ng-repeat="dom_responses in dom_itemsQuestions.responses"
+                             ng-show="validateTEXT(dom_responses.statement_text) && !validateJSON(dom_responses.statement_img)
+                                 && !validateJSON(dom_responses.statement_video) && !validateJSON(dom_responses.statement_audio)">
+                            <div class="row">
+                                <div class="col-9">
+                                    <label class="form-control form-control-sm bg-white"> Posible answer
+                                        {{$index + 1}} </label>
+                                    <label class="form-control form-control-sm h-auto">
+                                        {{dom_responses.statement_text}} </label>
+                                </div>
+                                <div class="col-3">
+                                    <label ng-show="dom_responses.flag_correct"
+                                           class="form-control form-control-sm h-auto bg-success text-white mt-0">
+                                        <i class="fas fa-check"></i> Answer Correct
+                                    </label>
+                                    <label ng-show="!dom_responses.flag_correct"
+                                           class="form-control form-control-sm h-auto bg-danger text-white mt-0">
+                                        <i class="fas fa-times"></i> Answer Incorrect
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group p-3 boder-personalice mt-3 posibleAnswer"
+                             ng-repeat="dom_responses in dom_itemsQuestions.responses"
+                             ng-show="validateJSON(dom_responses.statement_img)">
+                            <div class="row">
+                                <div class="col-9">
+                                    <label class="form-control form-control-sm bg-white"> Posible answer
+                                        {{$index + 1}} </label>
+                                    <img class="boder-personalice" ng-src="{{dom_responses.statement_img.url}}" alt="">
+                                    <label class="form-control form-control-sm mt-2 h-auto"
+                                           ng-show="validateTEXT(dom_responses.statement_text)">
+                                        {{dom_responses.statement_text}} </label>
+                                </div>
+                                <div class="col-3">
+                                    <label ng-show="dom_responses.flag_correct"
+                                           class="form-control form-control-sm h-auto bg-success text-white mt-0">
+                                        <i class="fas fa-check"></i> Answer Correct
+                                    </label>
+                                    <label ng-show="!dom_responses.flag_correct"
+                                           class="form-control form-control-sm h-auto bg-danger text-white mt-0">
+                                        <i class="fas fa-times"></i> Answer Incorrect
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group p-3 boder-personalice mt-3 posibleAnswer"
+                             ng-repeat="dom_responses in dom_itemsQuestions.responses"
+                             ng-show="validateJSON(dom_responses.statement_video)">
+                            <div class="row">
+                                <div class="col-9">
+                                    <label class="form-control form-control-sm bg-white"> Posible answer
+                                        {{$index + 1}} </label>
+                                    <video autoplay controls class="video-js mb-3 rounded">
+                                        <source src="{{dom_responses.statement_video.url}}" type="video/mp4"/>
+                                    </video>
+                                    <label class="form-control form-control-sm mt-2 h-auto"
+                                           ng-show="validateTEXT(dom_responses.statement_text)">
+                                        {{dom_responses.statement_text}} </label>
+                                </div>
+                                <div class="col-3">
+                                    <label ng-show="dom_responses.flag_correct"
+                                           class="form-control form-control-sm h-auto bg-success text-white mt-0">
+                                        <i class="fas fa-check"></i> Answer Correct
+                                    </label>
+                                    <label ng-show="!dom_responses.flag_correct"
+                                           class="form-control form-control-sm h-auto bg-danger text-white mt-0">
+                                        <i class="fas fa-times"></i> Answer Incorrect
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group p-3 boder-personalice mt-3 posibleAnswer"
+                             ng-repeat="dom_responses in dom_itemsQuestions.responses"
+                             ng-show="validateJSON(dom_responses.statement_audio)">
+                            <div class="row">
+                                <div class="col-9">
+                                    <label class="form-control form-control-sm bg-white"> Posible answer
+                                        {{$index + 1}} </label>
+                                    <button class="btn btn-primary rounded-pill btn-sm"
+                                            ng-click="playPause(dom_responses.statement_audio)">
+                                        <i class="far fa-play-circle"></i>
+                                        {{dom_responses.statement_audio.name + "." + dom_responses.statement_audio.ext}}
+                                    </button>
+                                    <label class="form-control form-control-sm mt-2 h-auto"
+                                           ng-show="validateTEXT(dom_responses.statement_text)">
+                                        {{dom_responses.statement_text}} </label>
+                                </div>
+                                <div class="col-3">
+                                    <label ng-show="dom_responses.flag_correct"
+                                           class="form-control form-control-sm h-auto bg-success text-white mt-0">
+                                        <i class="fas fa-check"></i> Answer Correct
+                                    </label>
+                                    <label ng-show="!dom_responses.flag_correct"
+                                           class="form-control form-control-sm h-auto bg-danger text-white mt-0">
+                                        <i class="fas fa-times"></i> Answer Incorrect
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger boder-personalice"
+                        data-dismiss="modal">Exit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end: modal para visualizar las preguntas-->
+
+<!--begin: modal para generar las preguntas aleatorias-->
+<div class="modal fade" id="modalRandomQuestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <form name="formRandomQuestion" ng-submit="generateQuestionRandom(formRandomQuestion)">
+                <div class="modal-header">
+                    <h5 class="modal-title">Randomized question</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm" for=""> Select a question bank </label>
+                        <select class="form-control form-control-sm" name="questionBSelect"
+                                ng-model="questionBSelect" required
+                                ng-options="questionBank.id_questiongroup as questionBank.group_name for questionBank in tableTypesQuestions"
+                                ng-change="loadQuestionByGroup()">
+                            <option value="" selected>----</option>
+                        </select>
+                        <span class="small text-primary"> Exists {{tableQuestion.length}} questions in the selected question bank.  </span>
+                        <div class="invalid-feedback">
+                            Please select the question bank
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm" for=""> Enter the number of random questions </label>
+                        <input name="countNumberQuestion" ng-model="countNumberQuestion" class="form-control form-control-sm" type="number">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-danger boder-personalice"
+                            ng-click="closeModalRandomQuestion(formExportPeriods)">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-sm btn-primary boder-personalice"
+                            ng-disabled="formExportPeriods.$invalid">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--end: modal para generar las preguntas aleatorias-->
+<div class="m-5">
+    <div class="page-title d-flex flex-column me-5">
+        <!--begin::Title-->
+        <h5 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">New Task</h5>
+        <!--end::Title-->
+        <!--begin::Breadcrumb-->
+        <ul class="breadcrumb fw-bold fs-7 small">
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">
+                <a href="/good/index.html" class="text-muted text-hover-primary">Home</a>
+            </li>
+            <!--end::Item-->
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">Tasks</li>
+            <!--end::Item--><!--begin::Item-->
+            <li class="breadcrumb-item text-muted">New task</li>
+            <!--end::Item-->
+        </ul>
+        <!--end::Breadcrumb-->
+    </div>
+    <!--begin: lista de periodos-->
+    <div class="p-3 border list">
+        <form name="formCreateEvaluation" ng-submit="createEvaluation(formCreateEvaluation)">
+            <div class="bg-white rounded p-3 border">
+                <h6> Enter the main information of the task. </h6>
+                <hr>
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm" for="periodSelected"> Select a study period </label>
+                    <select class="form-control form-control-sm" name="periodSelect" id="periodSelected" required
+                            ng-model="periodSelect"
+                            ng-options="period.id_period as period.name_period for period in tablePeriod"
+                            ng-change="loadClass()">
+                        <option value="" selected>----</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm" for="periodSelected"> Select a class </label>
+                    <select class="form-control form-control-sm" name="classSelect" ng-model="classSelect"
+                            ng-options="class.id_classroom as class.name_class for class in tableClass">
+                        <option value="" selected>----</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm" for="periodSelected"> Name task </label>
+                    <input name="nameTask" ng-model="nameTask" class="form-control form-control-sm" type="text" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm" for="periodSelected"> Description task </label>
+                    <textarea class="form-control form-control-sm" name="descrptionTask" ng-model="descrptionTask"
+                              cols="30" rows="5"></textarea>
+                </div>
+            </div>
+
+            <div class="bg-white rounded p-3 border mt-3">
+                <h6> Timing </h6>
+                <hr>
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm" > Open activity </label>
+                    <input ng-model="openActivity_nt" name="openActivity_nt" class="form-control form-control-sm"
+                           type="date" placeholder="yyyy-MM-dd" required>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm" > Start time (24-hour format) </label>
+                    <input ng-model="startTime_nt" name="startTime_nt" class="form-control form-control-sm"
+                           type="time" required>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm" > Close activity </label>
+                    <input ng-model="closeActivity_nt" name="closeActivity_nt" class="form-control form-control-sm"
+                           type="date" placeholder="yyyy-MM-dd" required>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm" > Time end </label>
+                    <input ng-model="timeEnd_nt" name="timeEnd_nt" class="form-control form-control-sm"
+                           type="time" required>
+                </div>
+            </div>
+
+            <div class="bg-white rounded p-3 border mt-3">
+                <h6> Additional task configuration </h6>
+                <hr>
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm" > Number of attempts </label>
+                    <input ng-model="attempts_nt" name="attempts_nt" class="form-control form-control-sm"
+                           type="number" min="1" ng-value="1">
+                </div>
+                <div class="row" ng-show="attempts_nt > 1">
+                    <div class="col-2">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="highest_score_id" required
+                            ng-model="points_attempts" name="points_attempts" value="hs">
+                            <label class="custom-control-label" for="highest_score_id">Highest point</label>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="custom-control custom-radio mb-3">
+                            <input type="radio" class="custom-control-input" id="average_score_id" required
+                                   ng-model="points_attempts" name="points_attempts"  ng-checked="attempts_nt === 1" value="as">
+                            <label class="custom-control-label" for="average_score_id">Average point</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch1" name="hide_answers" ng-model="hide_answers">
+                        <label class="custom-control-label" for="customSwitch1">Release the response and notes at the end of the assignment deadline.</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded p-3 border mt-3">
+                <h6> Select the bank and the category of questions where you will select the questions to be found
+                    within the task. </h6>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="col-form-label col-form-label-sm" for=""> Select a question bank </label>
+                            <select class="form-control form-control-sm" name="questionBSelect"
+                                    ng-model="questionBSelect"
+                                    ng-options="questionBank.id_questiongroup as questionBank.group_name for questionBank in tableTypesQuestions"
+                                    ng-change="loadQuestionByGroup()">
+                                <option value="" selected>----</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="col-form-label col-form-label-sm" for=""> Select a question type </label>
+                            <select class="form-control form-control-sm" name="questionTSelect"
+                                    ng-model="questionTSelect"
+                                    ng-options="questionType.id_categorie as questionType.name_categorie for questionType in tableQuestionType"
+                                    ng-change="loadQuestionsByCategory()">
+                                <option value="" selected>----</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label class="col-form-label col-form-label-sm text-white" for=""> --- </label>
+                        <button type="button" class="btn btn-success btn-sm boder-personalice w-100"
+                        ng-click="openModalRandomQuestion()"> Randomized questions</button>
+                    </div>
+                </div>
+                <div class="alert alert-success" role="alert">
+                    {{countRowsSelected}} questions have been selected for the current task.
+                </div>
+                <div class="table-responsive-xl table-bordered border rounded scroll">
+                    <table class="table table-striped table-sm small rounded mb-0" ng-show="tableQuestion.length > 0">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">
+                                <div class="custom-control custom-checkbox">
+                                    <input ng-model="periodAll"
+                                           type="checkbox" class="custom-control-input" id="periodAllId"
+                                           ng-click="selectedAllPeriod()">
+                                    <label class="custom-control-label" for="periodAllId"></label>
+                                </div>
+                            </th>
+                            <th scope="col"> N#</th>
+                            <th scope="col">QUESTION BANK</th>
+                            <th scope="col">QUESTION TYPE</th>
+                            <th scope="col">QUESTION</th>
+                            <th scope="col">DESCRIPTION</th>
+                            <th scope="col">CREATE DATE</th>
+                            <th scope="col" class="text-right">ACTION</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="dom_tableQuestion in tableQuestion">
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input"
+                                           id="{{'check_' + dom_tableQuestion.id_questions}}"
+                                           ng-click="selectedRow(dom_tableQuestion.id_questions, dom_tableQuestion)">
+                                    <label class="custom-control-label"
+                                           for="{{'check_' + dom_tableQuestion.id_questions}}"></label>
+                                </div>
+                            </td>
+                            <td> {{$index + 1}}</td>
+                            <td> {{dom_tableQuestion.group_name}}</td>
+                            <td> {{dom_tableQuestion.name_categorie}}</td>
+                            <td class="col-3">{{dom_tableQuestion.name_question}}</td>
+                            <td class="col-3">{{dom_tableQuestion.description_question}}</td>
+                            <td>{{dom_tableQuestion.date_update_question.split("T")[0]}}</td>
+                            <td class="text-right">
+                                <div class="btn-group">
+                                    <button type="button"
+                                            class="btn btn-actions btn-sm boder-personalice dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false"
+                                            id="{{'btn_' + dom_tableQuestion.id_questiongroup}}">
+                                        Actions
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right shadow"
+                                         aria-labelledby="{{'btn_' + dom_tableQuestion.id_questiongroup}}">
+                                        <button type="button" class="dropdown-item"
+                                                ng-click="viewQuestion(dom_tableQuestion)">
+                                            <i class="far fa-eye"></i> View
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-white rounded p-3 border mt-3 mb-3">
+                <h6>List of questions assigned to the current task</h6>
+                <hr>
+                <div class="alert alert-danger" role="alert" ng-show="questionSelected.length === 0">
+                    No questions have been selected from the question banks.
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label class="col-form-label col-form-label-sm" for="periodSelected"> Enter the base
+                                grade </label>
+                            <input name="bass" ng-model="bass" class="form-control form-control-sm" type="number">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label class="col-form-label col-form-label-sm" for="periodSelected"> Action </label> <br>
+                            <button class="btn btn-primary boder-personalice btn-sm"
+                            ng-click="calculatePoints()" type="button">
+                                Calculate points
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive-xl table-bordered border rounded scroll">
+                    <table class="table table-striped table-sm small rounded mb-0" ng-show="questionSelected.length > 0">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col"> N#</th>
+                            <th scope="col">QUESTION BANK</th>
+                            <th scope="col">QUESTION TYPE</th>
+                            <th scope="col">QUESTION</th>
+                            <th scope="col">DESCRIPTION</th>
+                            <th scope="col">CREATE DATE</th>
+                            <th scope="col">CALIFICATION</th>
+                            <th scope="col" class="text-right">ACTION</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="dom_tableQuestion in questionSelected">
+                            <td> {{$index + 1}}</td>
+                            <td> {{dom_tableQuestion.group_name}}</td>
+                            <td> {{dom_tableQuestion.name_categorie}}</td>
+                            <td>{{dom_tableQuestion.name_question}}</td>
+                            <td>{{dom_tableQuestion.description_question}}</td>
+                            <td>{{dom_tableQuestion.date_update_question.split("T")[0]}}</td>
+                            <td class="col-1">
+                                <input id="{{'calf' + $index}}" class="form-control form-control-sm" type="text"
+                                       disabled>
+                            </td>
+                            <td class="text-right">
+                                <button type="button" class="btn btn-sm btn-danger rounded"
+                                        ng-click="deleteQuestionSelected($index, dom_tableQuestion.id_questions)"> Remove
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn boton-primario-dos btn-sm"
+                        ng-click="openModalExport()"> Cancel
+                </button>
+                <button type="submit" class="btn boton-primario btn-sm"> Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

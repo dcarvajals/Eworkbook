@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="evluationquestion_evaluationresponse" directorySegmentName="seg_0" id="E99F131B-FEF3-07BE-E0A3-4529A3DF0B50">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:26:06 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="E45FE97E-3B86-8254-B3AD-6B43BE2AB9B9" value="true"/>
+</engineerTo>
+<sourcePk>378E7800-5C27-0C26-F262-F2A4D0AF1432</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>F9CBAC99-49C0-CCF6-0950-78087B4A83AA</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>2BC7A3DE-2C38-EEE0-F72C-8C18FE215BBD</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

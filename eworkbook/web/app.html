@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>EworkBook</title>
+    <link rel="shortcut icon" href="resources/img/logo-app/logo.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="resources/css/css_library/open-iconic-bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="resources/css/css_library/sb-admin-2.css">
+    <link rel="stylesheet" href="resources/css/css_app/index-app.css">
+    <link rel="stylesheet" href="resources/css/css_app/utils.css">
+    <link href="resources/css/css_library/toastr.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet"/>
+    <link href="resources/css/css_app/css_botones.css" rel="stylesheet" type="text/css"/>
+    <link href="resources/css/css_app/cssTab.css" rel="stylesheet" type="text/css"/>
+
+    <!--begin::Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap" rel="stylesheet">
+    <!--end::Fonts-->
+
+    <link rel="stylesheet" href="resources/css/css_library/all.min.css">
+
+    <script src="resources/js/js_library/jquery.min.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/popper.min.js"></script>
+    <script src="resources/js/js_library/bootstrap.min.js" type="text/javascript"></script>
+    <!--<script src="resources/js/js_library/bootstrap.bundle.min.js"></script>-->
+
+    <script src="resources/js/js_library/angular.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/angular-route.min.js"></script>
+    <script src="resources/js/js_library/store2.min.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/sweetalert2.min.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/toastr.min.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/export.min.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/axios.min.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/howler.core.js" type="text/javascript"></script>
+    <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
+
+    <script src="resources/js/js_global/js_global.js"></script>
+    <script src="resources/js/js_global/jsAlertPersonalize.js"></script>
+
+    <script src="resources/js/js_view/ctrl_app.js"></script>
+</head>
+<body ng-controller="application">
+<div id="wrapper" style="height: 100vh; overflow: hidden">
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="overflow: auto">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-text mx-3 mt-2 mb-2">
+                <img src="resources/img/logo-app/logoSoloduvca.png" alt="TDDm4IoTBS" width="40">
+                <label>EWORKBOOK</label>
+            </div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item {{appPage.Select==='home'?'active activepro':''}}">
+            <a class="nav-link" ng-click="redirect('home')">
+                <i class="oi oi-dashboard"></i>
+                <span>Home</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Teacher
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item {{appPage.Select==='period'?'active activepro':''}}">
+            <a class="nav-link" ng-click="redirect('period')">
+                <i class="fas fa-layer-group"></i>
+                <span>Period</span></a>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item {{appPage.Select==='myclass'?'active activepro':''}}">
+            <a class="nav-link" ng-click="redirect('myclass')">
+                <i class="fas fa-chalkboard"></i>
+                <span>My class</span></a>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item {{appPage.Select==='tasks'?'active activepro':''}}">
+            <a class="nav-link" ng-click="redirect('tasks')">
+                <i class="fas fa-book"></i>
+                <span> Tasks </span></a>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item {{appPage.Select==='questionbank'?'active activepro':''}}">
+            <a class="nav-link" ng-click="redirect('questionbank')">
+                <i class="fas fa-question"></i>
+                <span> Questions Bank </span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Student
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item {{appPage.Select==='joinclass'?'active activepro':''}}">
+            <a class="nav-link" ng-click="redirect('joinclass')">
+                <i class="fas fa-link"></i>
+                <span>Join class</span></a>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item {{appPage.Select==='myclassjoin'?'active activepro':''}}">
+            <a class="nav-link" ng-click="redirect('myclassjoin')">
+                <i class="fas fa-chalkboard"></i>
+                <span>My class</span></a>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item {{appPage.Select==='taskP'?'active activepro':''}}">
+            <a class="nav-link" ng-click="redirect('myclass')">
+                <i class="fas fa-book"></i>
+                <span> Tasks </span></a>
+        </li>
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+
+    </ul>
+
+    <div id="content-wrapper" style="min-height: 100%; position:relative;">
+        <!-- Main Content -->
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow"
+             style="position:absolute; width: 100%; z-index: 1">
+
+            <!-- Sidebar Toggle (Topbar) -->
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <form
+                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                           aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Topbar Tittle -->
+            <!--<h1 class="h3 mb-0 text-gray-800">{{appPage.tittle}}</h1>-->
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+
+                <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                <li class="nav-item dropdown no-arrow d-sm-none">
+                    <a class="nav-link dropdown-toggle" id="searchDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-search fa-fw"></i>
+                    </a>
+                    <!-- Dropdown - Messages -->
+                    <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                         aria-labelledby="searchDropdown">
+                        <form class="form-inline mr-auto w-100 navbar-search">
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0 small"
+                                       placeholder="Search for..." aria-label="Search"
+                                       aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+
+                <!-- Nav Item - Alerts -->
+                <li class="nav-item dropdown no-arrow mx-1">
+                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="oi oi-envelope-closed"></span>
+                        <!-- Counter - Alerts -->
+                        <span class="badge badge-danger badge-counter">3+</span>
+                    </a>
+                    <!-- Dropdown - Alerts -->
+                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                         aria-labelledby="alertsDropdown">
+                        <h6 class="dropdown-header">
+                            Alerts Center
+                        </h6>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-primary">
+                                    <i class="fas fa-file-alt text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="small text-gray-500">December 12, 2019</div>
+                                <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-success">
+                                    <i class="fas fa-donate text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="small text-gray-500">December 7, 2019</div>
+                                $290.29 has been deposited into your account!
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-warning">
+                                    <i class="fas fa-exclamation-triangle text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="small text-gray-500">December 2, 2019</div>
+                                Spending Alert: We've noticed unusually high spending for your account.
+                            </div>
+                        </a>
+                        <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                    </div>
+                </li>
+
+
+                <div class="topbar-divider d-none d-sm-block"></div>
+
+                <!-- Nav Item - User Information -->
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="badge badge-primary mr-3">{{
+                                        DatoUsuario.type_person === "U" ? "Usuario" :
+                                                DatoUsuario.type_person === "A" ? "Administrator" :
+                                                        DatoUsuario.type_person === "R" ? "Root" : "Inactive"
+                                        }}</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                        {{DatoUsuario.name_person + ' ' + DatoUsuario.lastname_person}}</span>
+                        <img class="img-profile rounded-circle" alt="..."
+                             ng-src="{{rutaImgUser + DatoUsuario.pathimg_person}}">
+                    </a>
+                    <!-- Dropdown - User Information -->
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                         aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Profile
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Settings
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Activity Log
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" ng-click="logOut()">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Logout
+                        </a>
+                    </div>
+                </li>
+
+            </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+
+        <div ng-view class="scroll" style="position:absolute; height: 100%; padding-top: 4.375rem; width: 100%"></div>
+
+        <!-- End Page Content -->
+
+        <!-- Footer -->
+
+
+    </div>
+</div>
+<script src="resources/js/js_global/sb-admin-2.js"></script>
+<script src="resources/js/js_view/ctrl_home.js"></script>
+<script src="resources/js/js_view/ctrl_period.js"></script>
+<script src="resources/js/js_view/ctrl_myclass.js"></script>
+<script src="resources/js/js_view/ctrl_tasks.js"></script>
+<script src="resources/js/js_view/ctrl_newtasks.js"></script>
+<script src="resources/js/js_view/ctrl_viewstudent.js"></script>
+<script src="resources/js/js_view/ctrl_questionbank.js"></script>
+<script src="resources/js/js_view/ctrl_question.js"></script>
+<script src="resources/js/js_view/ctrl_joinclass.js"></script>
+<script src="resources/js/js_view/ctrl_myclassjoin.js"></script>
+<script src="resources/js/js_view/ctrl_notfound.js"></script>
+
+<!--begin:files multiples choise!-->
+<script src="questions/multiple_choise/ctrl_multipleChoise.js"></script>
+<!--end:files mutiple choise!-->
+
+</body>
+</html>

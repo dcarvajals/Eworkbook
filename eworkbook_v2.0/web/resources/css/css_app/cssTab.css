@@ -1,0 +1,39 @@
+
+.tabNavQ{
+    width: 450px;
+}
+.navItemQ{
+    width: 50%;
+}
+.nav-pills .nav-link{
+    font-weight: bold;
+    padding-top: 13px;
+    text-align: center;
+    background: #fff;
+    color: #000;
+    border-radius: 30px;
+    height: 100px;
+}
+.nav-pills .nav-link.active{
+    background: #000;
+    color: #fff;
+}
+.tab-content{
+    position: sticky;
+    width: 100%;
+    height: auto;
+    margin-top: -50px;
+    background: #fff;
+    color: #000;
+    border-radius: 30px;
+    z-index: 1000;
+    border: 1px solid #E3E6F0;
+    padding: 30px;
+    margin-bottom: 50px;
+}
+.tab-content .btnTab{
+    border-radius: 15px;
+    width: 100px;
+    margin: 0 auto;
+    float: right;
+}

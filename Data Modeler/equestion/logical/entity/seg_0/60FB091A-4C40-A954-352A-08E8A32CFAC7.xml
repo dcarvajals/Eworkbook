@@ -1,0 +1,210 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="60FB091A-4C40-A954-352A-08E8A32CFAC7" name="evaluation">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 04:32:33 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_evaluation" id="473B250A-C8D1-0E08-52C6-230CA855ACF9">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 04:52:37 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name_evaluation" id="B900795D-42C9-F29E-4ADE-229BADC1EA44">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 04:52:59 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="description_evaluation" id="721B701A-0A0A-1C4F-4DC4-4831AD805ABE">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 04:53:23 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="state_evaluation" id="C776F8ED-E814-1944-8789-2D97136A28A0">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 04:57:27 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="date_registration_evaluation" id="A282307F-E375-980A-460C-1E6E87CF3422">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 04:57:46 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT046</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="date_finish_evaluation" id="85E6FA51-8108-1F6D-E556-B8F8560E695F">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 04:59:04 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT046</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="attempts" id="2DD14F94-6217-6938-857A-7F66D462CF87">
+<createdBy>Usuario</createdBy>
+<createdTime>2022-03-27 01:59:55 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="highest_score" id="CF26AEFB-9721-97E0-6BED-F25CA5EE8AB8">
+<createdBy>Usuario</createdBy>
+<createdTime>2022-03-27 02:00:29 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="average" id="13673E0B-25CD-E723-6FFF-496C944662F7">
+<createdBy>Usuario</createdBy>
+<createdTime>2022-03-27 02:05:15 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="date_init_evaluation" id="DBD152EA-A87D-F7CD-6A2A-DBF002B99366">
+<createdBy>Usuario</createdBy>
+<createdTime>2022-03-27 01:59:26 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT047</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="release_answer" id="2D919ED6-1EC4-1F84-76DE-B0155F7DF165">
+<createdBy>Usuario</createdBy>
+<createdTime>2022-03-27 02:05:25 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="points_base" id="00B32DB8-DC2D-E739-21F0-50C4D384BC99">
+<createdBy>Usuario</createdBy>
+<createdTime>2022-03-27 02:05:38 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_classroom " id="544EC0A0-0B40-3B5C-FB1A-C9F4FE2C8F94">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 06:11:24 UTC</createdTime>
+<generatorID>05F52ADE-8722-6F0B-096F-F646879CDD9B</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<referedAttribute>39FB829B-7D44-953E-13A9-C0081592E492</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="9007CE42-05DA-AA5F-D497-F498FC905B26" name="evaluation PK">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-29 04:52:49 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<engineerTo>
+<item key="A0297F81-193E-440F-FD15-E43E3778F354" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>473B250A-C8D1-0E08-52C6-230CA855ACF9</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

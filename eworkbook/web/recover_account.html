@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html ng-app="app" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recover Account</title>
+    <link rel="shortcut icon" href="resources/img/logo-app/logo.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/css/css_library/sb-admin-2.css">
+    <link href="resources/css/css_library/open-iconic-bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="resources/css/css_library/toastr.min.css" rel="stylesheet" type="text/css"/>
+    <link href="resources/css/css_app/css_botones.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="resources/css/css_app/index-app.css">
+
+    <!--begin::Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap" rel="stylesheet">
+    <!--end::Fonts-->
+
+    <script src="resources/js/js_library/jquery.min.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/angular.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/bootstrap.min.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/sweetalert2.min.js" type="text/javascript"></script>
+    <script src="resources/js/js_library/toastr.min.js" type="text/javascript"></script>
+</head>
+<body ng-controller="ctrl_recoveraccount">
+<div class="container mt-5">
+    <img class="mb-5" src="resources/img/logo-app/logoApp2duvca.png" alt="logo" width="150">
+    <div class="m-auto w-50">
+        <h4><strong> Recover Account </strong></h4>
+        <form name="form_ressetpassword" ng-submit="changePassword(form_ressetpassword)">
+            <div class="form-group">
+                <label class="col-form-label col-form-label-sm"> New password: </label>
+                <span> <strong class="text-danger col-form-label-sm"> * </strong></span>
+                <input name="password_user" ng-model="password_user" maxlength="10" autocomplete="new-password"
+                       type="password" required ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}/"
+                       ng-class="(form_ressetpassword.password_user.$invalid && form_ressetpassword.password_user.$dirty) ?
+                        'form-control form-control-sm is-invalid' : 'form-control form-control-sm'"/>
+                <div class="invalid-feedback">
+                    Please enter your password
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label col-form-label-sm"> Confirm password: </label>
+                <span> <strong class="text-danger col-form-label-sm"> * </strong></span>
+                <input name="cpassword_user" ng-model="cpassword_user" maxlength="10" type="password" required
+                       ng-class="(form_ressetpassword.cpassword_user.$invalid && form_ressetpassword.cpassword_user.$dirty) ?
+                        'form-control form-control-sm is-invalid' : 'form-control form-control-sm'"/>
+                <div class="invalid-feedback">
+                    Please enter your password
+                </div>
+            </div>
+
+            <div class="small"
+                 ng-show="!form_ressetpassword.password_user.$invalid && !form_ressetpassword.password_user.$invalid.pattern">
+                <p class="text-success">
+                    <span class="oi oi-circle-check"></span> Must contain at least 6 characters. </p>
+                <p class="text-success">
+                    <span class="oi oi-circle-check"></span> Must contain at least one uppercase and one lowercase
+                    letter. </p>
+                <p class="text-success ">
+                    <span class="oi oi-circle-check"></span> Must contain at least one number. </p>
+            </div>
+            <div class="small"
+                 ng-show="!form_ressetpassword.password_user.$pristine && form_ressetpassword.password_user.$error.pattern && form_ressetpassword.password_user.$dirty">
+                <p class="text-danger">
+                    <span class="oi oi-circle-x"></span> Must contain at least 6 characters. </p>
+                <p class="text-danger">
+                    <span class="oi oi-circle-x"></span> Must contain at least one uppercase and one lowercase letter.
+                </p>
+                <p class="text-danger">
+                    <span class="oi oi-circle-x"></span> Must contain at least one number </p>
+            </div>
+
+            <p ng-show="(form_ressetpassword.password_user.$viewValue.length > 0 &&
+                    form_ressetpassword.cpassword_user.$viewValue.length > 0) && (form_ressetpassword.password_user.$viewValue ===
+                    form_ressetpassword.cpassword_user.$viewValue)" class="text-success small">
+                <span class="oi oi-circle-check"></span> Passwords are the same
+            </p>
+
+            <p ng-show="(form_ressetpassword.password_user.$viewValue.length > 0 &&
+                    form_ressetpassword.cpassword_user.$viewValue.length > 0) && (form_ressetpassword.password_user.$viewValue !==
+                    form_ressetpassword.cpassword_user.$viewValue)" class="text-danger small">
+                <span class="oi oi-circle-x"></span> Passwords are not the same
+            </p>
+
+            <a href="login.html" class="btn boton-secundario btn-sm rounded-pill" data-dismiss="modal">Login</a>
+            <button type="submit" class="btn boton-primario btn-sm rounded-pill" ng-disabled="form_ressetpassword.$invalid">Change password</button>
+        </form>
+        <hr>
+    </div>
+</div>
+</div>
+<script src="resources/js/js_global/js_global.js"></script>
+<script src="resources/js/js_global/jsAlertPersonalize.js"></script>
+<script src="resources/js/js-resetpassword.js"></script>
+</body>
+</html>

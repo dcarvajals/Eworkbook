@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="app">
+    <head>
+        <title>Login</title>
+        <link rel="shortcut icon" href="resources/img/logo-app/logo.ico">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="resources/css/css_library/sb-admin-2.css">
+        <link href="resources/css/css_library/toastr.min.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/css_app/css_botones.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="resources/css/css_library/all.min.css">
+        <link href="resources/css/css_app/utils.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="resources/css/css_app/index-app.css">
+
+        <!--begin::Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap" rel="stylesheet">
+        <!--end::Fonts-->
+
+        <script src="resources/js/js_library/jquery.min.js" type="text/javascript"></script>
+        <script src="resources/js/js_library/angular.js" type="text/javascript"></script>
+        <script src="resources/js/js_library/store2.min.js" type="text/javascript"></script>
+        <script src="resources/js/js_library/bootstrap.min.js" type="text/javascript"></script>
+        <script src="resources/js/js_library/sweetalert2.min.js" type="text/javascript"></script>
+        <script src="resources/js/js_library/toastr.min.js" type="text/javascript"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-auth.js"></script>
+    </head>
+    <body ng-controller="ctrl_login">
+
+        <!-- MODAL PARA RECUPERAR CUENTA - INICIO-->
+        <div class="modal fade" tabindex="-1" role="dialog" id="modalRecoverAccount" aria-hidden="true" data-backdrop="static"
+             data-keyboard="false">
+            <div class="modal-dialog" role="document">
+                <form name="form_recover" ng-submit="sendCodeEmail(form_recover)">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Recover Account</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="col-form-label col-form-label-sm"> Email: </label>
+                                <input name="email_recover" id="email_recover" ng-model="email_recover" type="email" required
+                                       ng-class="(form_recover.email_recover.$invalid && form_recover.email_recover.$dirty) ?
+                                                               'form-control form-control-sm is-invalid' : 'form-control form-control-sm'"/>
+                                <div class="invalid-feedback">
+                                    Please enter your email
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn boton-secundario btn-sm rounded-pill" data-dismiss="modal">Close
+                            </button>
+                            <button type="submit" ng-disabled="form_recover.$invalid"
+                                    class="btn boton-primario btn-sm rounded-pill">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- MODAL PARA RECUPERAR CUENTA - FIN-->
+
+        <div class="container mt-5">
+            <img class="mb-5" src="resources/img/logo-app/logoApp2duvca.png" alt="logo" width="150">
+            <div class="m-auto w-50" ng-show="visible === 1">
+                <h4><strong> Log In </strong></h4>
+                <button ng-click="logGoogle()" class="btn w-100 btn-sm btn-google text-white rounded-pill">
+                    <i class="fab fa-google"></i> Log in with Google
+                </button>
+                <form name="form_login" ng-submit="logIn(form_login)">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm"> Email: </label>
+                        <input name="email_login" id="email_login" ng-model="email_login" type="email" required
+                               ng-class="(form_login.email_login.$invalid && form_login.email_login.$dirty) ?
+                                                       'form-control form-control-sm is-invalid' : 'form-control form-control-sm'"/>
+                        <div class="invalid-feedback">
+                            Please enter your email
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm"> Password: </label>
+                        <input name="password_login" id='password_login' ng-model="password_login" type="password" required=""
+                               autocomplete="new-password"
+                               ng-class="(form_login.password_login.$invalid && form_login.password_login.$dirty) ?
+                                                       'form-control form-control-sm is-invalid' : 'form-control form-control-sm'"/>
+                        <div class="invalid-feedback">
+                            Please enter your password
+                        </div>
+                    </div>
+                    <button type="submit" class="btn boton-primario btn-sm rounded-pill" ng-disabled="form_login.$invalid">
+                        Access
+                    </button>
+                </form>
+                <hr>
+                <span class="col-form-label-sm">
+                    Create an account
+                </span>
+                <a class="col-form-label-sm float-right" href="index.html"> Back to top </a>
+                <a class="col-form-label-sm" href="singup.html"> Sign Up </a>
+                <span class="oi oi-chevron-right col-form-label-sm" style="margin-left: 0.5rem"></span> <br>
+                <span class="col-form-label-sm">
+                    I forgot my password
+                </span>
+                <a class="col-form-label-sm" href="#" ng-click="openModal('modalRecoverAccount')"> Recover account </a>
+                <span class="oi oi-chevron-right col-form-label-sm" style="margin-left: 0.5rem"></span> <br>
+                <hr>
+            </div>
+
+            <div id="panel_registro" class="panel-usuario centrar ng-hide" ng-show="visible === 2">
+                <!--                <nav class="navbar navbar-light bg-dark min-nav">
+                                </nav>-->
+                <div class="m-auto w-50 contenedor">
+                    <div class="container-fluid abs-center panel-img">
+                        <!--<img width="100" class="img-login" ng-src="{{modelregistrar.userimage}}" src="resources/img/fodito.png" alt=""/>-->
+                        <canvas id="login_api_canvas" width="200" height="200" class="img-login"></canvas>
+                    </div>
+                    <div class="text-center">
+                        <h5>This is you?</h5>    
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row form-group min-margin textcenter">
+                            <div>
+                                <img crossorigin="Anonymous" height="20" ng-src="{{'resources/icons/' + modelregistrar.provider + '.svg'}}" />
+                                <span class="badge badge-warning">{{modelregistrar.provider}}</span>
+                            </div>
+                        </div>
+                        <div class="row form-group min-margin">
+                            <div class="col-2 ">
+                                <span class="oi oi-person"></span>      
+                            </div>
+                            <input ng-model="modelregistrar.username" class="form-control col spnR" type="text" placeholder="Ingrese su nombre" maxlength="50" data-toggle="tooltip" data-placement="left" title="max. 50 caracteres"/>
+                        </div>
+                        <div class="row form-group min-margin">
+                            <div class="col-2 ">
+                                <span class="oi oi-person"></span>     
+                            </div>
+                            <input ng-model="modelregistrar.userlastname" class="form-control col spnR" type="text" placeholder="Ingrese su apellido" maxlength="50"  data-toggle="tooltip" data-placement="left" title="max. 50 caracteres"/>
+                        </div>
+                        <div class="row form-group min-margin">
+                            <div class="col-2 ">
+                                <span class="oi oi-envelope-closed align-middle"></span>        
+                            </div>
+                            <input ng-model="modelregistrar.useremail" class="form-control col spnR" type="email" placeholder="Ingrese su email" maxlength="100" data-toggle="tooltip" data-placement="left" title="max. 100 caracteres" readonly/>
+                        </div>
+                        <div class="form-group text-center min-margin">
+                            <button ng-click="loginApi()" type="button" class="btn btn-outline-info btn-sm">Yes, I'm</button>
+                        </div>
+                        <div class="form-group text-center min-margin">
+                            <span class="col text-left form-group min-margin">
+                                <a ng-click="cancelar()" class="aA text-info" href="#">It's not me</a>    
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="resources/js/js_global/js_global.js"></script>
+        <script src="resources/js/js_global/jsAlertPersonalize.js"></script>
+        <script src="resources/js/js-login.js"></script>
+    </body>
+</html>

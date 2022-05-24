@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="9DA32636-CD45-4B8E-C058-EDD4C1EE5C29" mainViewID="2CDD077A-5AC9-CF24-6113-61A29B2598C2">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-28 20:04:34 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

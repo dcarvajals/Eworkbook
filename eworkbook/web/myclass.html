@@ -1,0 +1,478 @@
+<!--begin: modal para agregar una nueva clase-->
+<div class="modal fade" id="modalAddClass" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <form name="formAddClass" ng-submit="addClass(formAddClass)">
+                <div class="modal-header">
+                    <h5 class="modal-title" ng-show="!flagUpdate">Add a class</h5>
+                    <h5 class="modal-title" ng-show="flagUpdate">Update a class</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm">Selected period
+                            <span class="text-danger">*</span>
+                        </label>
+                        <select name="selectperiod_cl"
+                                ng-model="selectperiod_cl"
+                                ng-class="(formAddClass.selectperiod_cl.$invalid &&
+                                                       formAddClass.selectperiod_cl.$dirty) ?
+                                                       'form-control form-control-sm is-invalid'
+                                                       : 'form-control form-control-sm'" required
+                                ng-options="period.id_period  as period.name_period for period in tablePeriod">
+                        </select>
+                        <div class="invalid-feedback">
+                            Please selected the period
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="col-form-label col-form-label-sm">Class name
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input name="name_cl"
+                                       ng-model="name_cl"
+                                       ng-class="(formAddClass.name_cl.$invalid &&
+                                                       formAddClass.name_cl.$dirty) ?
+                                                       'form-control form-control-sm is-invalid'
+                                                       : 'form-control form-control-sm'" maxlength="20"
+                                       required autocomplete="off"/>
+                                <div class="invalid-feedback">
+                                    Please enter the class name
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="col-form-label col-form-label-sm">Number class </label>
+                                <input name="number_cl"
+                                       ng-model="number_cl"
+                                       class="form-control form-control-sm"
+                                       autocomplete="off"
+                                       type="number"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm">Section class </label>
+                        <input name="section_cl"
+                               ng-model="section_cl"
+                               class="form-control form-control-sm" maxlength="30"
+                               autocomplete="off"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm"> Description class
+                            <span class="text-danger">*</span></label>
+                        <textarea name="description_cl"
+                                  ng-model="description_cl"
+                                  ng-class="(formAddClass.description_cl.$invalid && formAddClass.description_cl.$dirty) ?
+                                           'form-control form-control-sm is-invalid'
+                                           : 'form-control form-control-sm'" maxlength="200"
+                                  required rows="5" autocomplete="off" style="resize: none">
+                        </textarea>
+                        <div class="invalid-feedback">
+                            Please enter the description class
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-danger boder-personalice"
+                            ng-click="closeModalClass(formAddClass)">Cancel
+                    </button>
+                    <button type="submit" class="btn btn-sm btn-primary boder-personalice"
+                            ng-disabled="formAddClass.$invalid"
+                            ng-show="!flagUpdate">
+                        Save changes
+                    </button>
+                    <button type="button" class="btn btn-sm btn-primary boder-personalice"
+                            ng-disabled="formAddClass.$invalid" ng-click="updateClass(formAddClass)"
+                            ng-show="flagUpdate">
+                        Update changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--end: modal para agregar una nueva clase-->
+
+<!--begin: modal para exportar la lista de clases-->
+<div class="modal fade" id="modalExportClass" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <form name="formExportsClass" ng-submit="exportClass(formExportsClass)">
+                <div class="modal-header">
+                    <h5 class="modal-title">Export class</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm">Select export format
+                            <span class="text-danger">*</span> </label>
+                        <select name="exportFormat" ng-model="exportFormat"
+                                ng-class="(formExportsClass.exportFormat.$invalid &&
+                                           formExportsClass.exportFormat.$dirty) ?
+                                           'form-control form-control-sm is-invalid'
+                                           : 'form-control form-control-sm'" required>
+                            <option value="">---</option>
+                            <option value="1">Excel</option>
+                            <option value="2">Word</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select the export format
+                        </div>
+                    </div>
+                    <table class="none" id="listableclass">
+                        <thead>
+                        <tr>
+                            <th scope="col"> Nº</th>
+                            <th scope="col">PERIOD</th>
+                            <th scope="col">CLASS CODE</th>
+                            <th scope="col">CLASS NAME</th>
+                            <th scope="col">CREATED TASKS</th>
+                            <th scope="col">DELIVERED TASKS</th>
+                            <th scope="col">PENDING TASKS</th>
+                            <th scope="col">CREATED DATE</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="dom_tableClass in tableClass">
+                            <td> {{$index + 1}}</td>
+                            <td>{{dom_tableClass.name_period}}</td>
+                            <td>{{dom_tableClass.code_class}}</td>
+                            <td>{{dom_tableClass.name_class}}</td>
+                            <td>{{dom_tableClass.evaluation_created}}</td>
+                            <td>---</td>
+                            <td>---</td>
+                            <td>{{dom_tableClass.date_registration_class.split('T')[0]}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-danger boder-personalice"
+                            ng-click="closeModalExport(formExportsClass)">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-sm btn-primary boder-personalice"
+                            ng-disabled="formExportsClass.$invalid">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--end: modal para exportar la lista de clases-->
+
+<!--begin: modal para visualizar el detalle de una clase seleccionada-->
+<div class="modal fade" id="modalClassDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Class details</h5>
+            </div>
+            <div class="modal-body scroll">
+                <h1><span class="badge badge-primary boder-personalice"
+                          id="codeClass">{{classDetails.code_class}}</span></h1>
+                <button class="btn btn-success btn-sm boder-personalice" ng-click="copyCode()"> Copy code</button>
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm">Period name</label>
+                    <label class="form-control form-control-sm h-auto">{{classDetails.name_period}}</label>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="col-form-label col-form-label-sm">Class Name</label>
+                            <label class="form-control form-control-sm h-auto">{{classDetails.name_class}}</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="col-form-label col-form-label-sm">Number class</label>
+                            <label class="form-control form-control-sm h-auto">{{classDetails.classroom_number}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm">Section class</label>
+                    <label class="form-control form-control-sm h-auto">{{classDetails.class_section}}</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm">Description class</label>
+                    <label class="form-control form-control-sm h-auto">{{classDetails.class_description}}</label>
+                </div>
+
+                <label>Tasks</label>
+
+                <div class="w-100 mb-3">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                        Created Tasks
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        {{classDetails.evaluation_created}}
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-cubes fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-100 mb-3">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Delivered Tasks
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">---</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-check fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-100 mb-3">
+                    <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                        Pending Tasks
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">---</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger boder-personalice"
+                        ng-click="closeModalClassDetails()">Exit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end: modal para visualizar el detalle de una clase seleccionada-->
+
+<!--begin: modal para enviar por correo masivo el codigo de la clase-->
+<div class="modal fade" id="modalSendEmail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <form name="formSendEmail" ng-submit="wsAddPeriod(formSendEmail)">
+                <div class="modal-header">
+                    <h5 class="modal-title">Send email</h5>
+                </div>
+                <div class="modal-body">
+                    <h1><span class="badge badge-primary boder-personalice">{{classDetails.classCode}}</span></h1>
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm">Email group
+                            <span class="text-danger">*</span> </label>
+                        <input type="email"
+                               name="emailgroup_se"
+                               ng-model="emailgroup_se"
+                               ng-class="(formSendEmail.emailgroup_se.$invalid &&
+                                            formSendEmail.emailgroup_se.$dirty) ?
+                                           'form-control form-control-sm is-invalid'
+                                           : 'form-control form-control-sm'" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-danger boder-personalice"
+                            ng-click="closeModalSendEmail()">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-sm btn-primary boder-personalice"
+                            ng-disabled="formSendEmail.$invalid">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--end: modal para enviar por correo masivo el codigo de la clase-->
+
+<div class="m-4">
+    <div class="page-title d-flex flex-column me-5">
+        <!--begin::Title-->
+        <h5 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">My class</h5>
+        <!--end::Title-->
+        <!--begin::Breadcrumb-->
+        <ul class="breadcrumb fw-bold fs-7 small">
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">
+                <a href="app.html#!/home" class="text-muted text-hover-primary">Home</a>
+            </li>
+            <!--end::Item-->
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">My class</li>
+            <!--end::Item-->
+        </ul>
+        <!--end::Breadcrumb-->
+    </div>
+    <!--begin: lista de clases-->
+    <div class="p-4 border rounded bg-white" style="max-height: 75vh">
+
+        <div ng-show="!viewList" class="text-center w-100">
+            <h2 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">Welcome!</h2>
+            <p class="text-gray-800 fs-4 fw-bold mb-10">There are not class added yet.
+                <br>Kickstart your CRM by adding a your first period</p>
+            <button class="btn boton-primario" ng-click="openModalClass()"> Add Class</button>
+
+            <div class="text-center px-4">
+                <img class="mw-100" alt="" src="resources/img/img-app/newObject.png" width="380">
+            </div>
+        </div>
+
+        <div ng-show="viewList">
+            <div class="headerpro">
+                <div class="float-right">
+                    <div class="flex-column" style="letter-spacing: 0.5rem;">
+                        <button class="btn btn-primary rounded btn-sm" ng-show="countRowsSelected === 0"
+                                ng-click="loadAllClass()">
+                            <i class="fas fa-chevron-circle-down"></i> Load all classes
+                        </button>
+                        <button class="btn boton-primario-dos btn-sm" ng-show="countRowsSelected === 0"
+                                ng-click="openModalExport()">
+                            <i class="fas fa-file-export"></i> Export
+                        </button>
+                        <button class="btn boton-primario btn-sm" ng-click="openModalClass()"
+                                ng-show="countRowsSelected === 0">
+                            Add Class
+                        </button>
+                        <span class="text-dark mr-2 small" ng-show="countRowsSelected > 0"
+                              style="letter-spacing: normal">
+                        {{countRowsSelected}} Selected </span>
+                        <button class="btn btn-danger btn-sm boder-personalice" ng-show="countRowsSelected > 0"
+                                ng-click="deleteAllSelected()">
+                            Delete Selected
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xl-3 col-md-6 p-0">
+                        <div class="form-group">
+                            <select ng-model="selectPeriods" name="selectPeriods" class="form-control"
+                                    ng-options="period.id_period  as period.name_period for period in tablePeriod"
+                                    ng-change="changeListClass(selectPeriods)">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col col-xl-3 col-md-6 p-0 ml-3">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search class"
+                                   ng-model="searchPeriod" name="searchPeriod">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive-xl table-bordered border rounded scroll" ng-show="tableClass.length > 0"
+                 style="min-height: 12vh; max-height: 61vh">
+                <table class="table table-striped table-sm small rounded mb-0">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">
+                            <div class="custom-control custom-checkbox">
+                                <input ng-model="classAllId"
+                                       type="checkbox" class="custom-control-input" id="classAllId"
+                                       ng-click="selectedAllClass()">
+                                <label class="custom-control-label" for="classAllId"></label>
+                            </div>
+                        </th>
+                        <th scope="col">Nº</th>
+                        <th scope="col">CLASS CODE</th>
+                        <th scope="col">PERIOD</th>
+                        <th scope="col">CLASS NAME</th>
+                        <th scope="col">CREATED TASKS</th>
+                        <th scope="col">DELIVERED TASKS</th>
+                        <th scope="col">PENDING TASKS</th>
+                        <th scope="col">CREATED DATE</th>
+                        <th scope="col" class="text-right">ACTION</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="dom_tableClass in tableClass">
+                        <td scope="row">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input"
+                                       id="{{'check_' + dom_tableClass.id_classroom}}"
+                                       ng-click="selectedRowDelete(dom_tableClass.id_classroom)">
+                                <label class="custom-control-label"
+                                       for="{{'check_' + dom_tableClass.id_classroom}}"></label>
+                            </div>
+                        </td>
+                        <td> {{$index + 1}}</td>
+                        <td>
+                            <h5><span class="badge badge-primary w-100">{{dom_tableClass.code_class}}</span></h5>
+                        </td>
+                        <td>{{dom_tableClass.name_period}}</td>
+                        <td>{{dom_tableClass.name_class}}</td>
+                        <td>
+                            <h5><a href="#" class="badge badge-info w-100"> {{dom_tableClass.evaluation_created}} <i
+                                    class="fas fa-eye"></i></a></h5>
+                        </td>
+                        <td>
+                            <h5><a href="#" class="badge badge-success w-100"> --- <i class="fas fa-eye"></i></a></h5>
+                        </td>
+                        <td>
+                            <h5><a href="#" class="badge badge-warning w-100"> --- <i class="fas fa-eye"></i></a></h5>
+                        </td>
+                        <td>{{dom_tableClass.date_registration_class.split('T')[0]}}</td>
+                        <td class="text-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-actions btn-sm boder-personalice dropdown-toggle"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false"
+                                        id="{{'btn_' + dom_tableClass.id_classroom}}">
+                                    Actions
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right shadow"
+                                     aria-labelledby="{{'btn_' + dom_tableClass.id_classroom}}">
+                                    <button class="dropdown-item" ng-click="selectedRow(dom_tableClass)">
+                                        <i class="fas fa-pen-alt"></i> Update
+                                    </button>
+                                    <button class="dropdown-item" ng-click="openModalClassDetails(dom_tableClass)">
+                                        <i class="far fa-eye"></i> View Class
+                                    </button>
+                                    <button class="dropdown-item" ng-click="viewStudent(dom_tableClass)">
+                                        <i class="fas fa-users"></i> View Students
+                                    </button>
+                                    <button class="dropdown-item" ng-click="openModalSendEmail(dom_tableClass)">
+                                        <i class="fas fa-envelope"></i> Send Emal Code
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-show="tableClass.length === 0" class="p-4 text-center">
+                <h5 class="font-weight-bold text-danger"> The selected period has no record of any class created. </h5>
+                <img class="mw-100" alt="" src="resources/img/img-app/newObject.png" width="400">
+            </div>
+        </div>
+    </div>
+    <!--end: lsita de periodos-->
+</div>

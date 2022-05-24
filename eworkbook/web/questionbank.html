@@ -1,0 +1,462 @@
+<!--begin: modal para agregar un nuevo tipo de pregunta -->
+<div class="modal fade" id="modalAddNewTypeQuestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <form name="formAddQuestionBank" ng-submit="addQuestionBank(formAddQuestionBank)">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Question Bank</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm">Name
+                            <span class="text-danger">*</span></label>
+                        <input name="name_tq" type="text"
+                               ng-model="name_tq" required autocomplete="off"
+                               ng-class="(formAddQuestionBank.name_tq.$invalid &&
+                                           formAddQuestionBank.name_tq.$dirty) ?
+                                           'form-control form-control-sm is-invalid'
+                                           : 'form-control form-control-sm'" maxlength="30"/>
+                        <div class="invalid-feedback">
+                            Please enter the name question bank
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm">Desription
+                            <span class="text-danger">*</span></label>
+                        <textarea name="description_tq"
+                               ng-model="description_tq" required
+                               ng-class="(formAddQuestionBank.description_tq.$invalid &&
+                                           formAddQuestionBank.description_tq.$dirty) ?
+                                           'form-control form-control-sm is-invalid'
+                                           : 'form-control form-control-sm'"
+                                  rows="5" autocomplete="off" style="resize: none">
+                        </textarea>
+                        <div class="invalid-feedback">
+                            Please enter the description question bank
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-danger boder-personalice"
+                            ng-click="closeModalAddTypeQuestion(formAddQuestionBank)">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-sm btn-primary boder-personalice"
+                            ng-disabled="formAddQuestionBank.$invalid" ng-show="!flagUpdate">
+                        Save changes
+                    </button>
+                    <button type="button" class="btn btn-sm btn-primary boder-personalice"
+                            ng-disabled="formAddQuestionBank.$invalid" ng-show="flagUpdate"
+                            ng-click="updateQuestionBank(formAddQuestionBank)">
+                        Upadate changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--end: modal para agregar un nuevo tipo de pregunta -->
+
+<!-- modal para seleccionar el tipo de pregunta nueva a crear -->
+<div class="modal fade" id="modalQuestionType" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Questions type</h5>
+            </div>
+            <div class="modal-body scroll">
+                <div class="row">
+                    <div class="col-xl-6 col-md-6 mb-4" ng-repeat="dom_tableQuestionType in tableQuestionType">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            <a href="" ng-click="addQuestion(dom_tableQuestionType.folder)"> {{dom_tableQuestionType.name_categorie}} </a>   
+                                        </div>
+                                        <div class="mb-0 font-weight-bold text-gray-800">{{dom_tableQuestionType.description_categorie}}</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <img src="" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="small" href="https://www.flaticon.es/iconos-gratis/opcion-multiple"
+                   title="opción multiple iconos">Opción multiple iconos creados por juicy_fish - Flaticon</a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger boder-personalice"
+                        ng-click="closeModalAddQuestion()">Exit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--begin: modal para visualizar los datos del banco de preguntas-->
+<div class="modal fade" id="modalBankQuestionDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Question bank details</h5>
+            </div>
+            <div class="modal-body scroll">
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm">Question bank</label>
+                    <label class="form-control form-control-sm h-auto">{{typeQuestionBankDetails.group_name}}</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label col-form-label-sm">Description</label>
+                    <label class="form-control form-control-sm h-auto">{{typeQuestionBankDetails.group_description}}</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger boder-personalice"
+                        ng-click="closeModalBankQuestionDetails()">Exit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end: modal para visualizar los datos del banco de preguntas-->
+
+<!--begin: modal para exportar los datos a formato word o excel-->
+<div class="modal fade" id="modalExporQuestionBank" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <form name="formExportsClass" ng-submit="exportTable(formExportsClass, 'listableqb', 'questionBank', 'modalExporQuestionBank')">
+                <div class="modal-header">
+                    <h5 class="modal-title">Export class</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm">Select export format
+                            <span class="text-danger">*</span> </label>
+                        <select name="exportFormat" ng-model="exportFormat"
+                                ng-class="(formExportsClass.exportFormat.$invalid &&
+                                           formExportsClass.exportFormat.$dirty) ?
+                                           'form-control form-control-sm is-invalid'
+                                           : 'form-control form-control-sm'" required>
+                            <option value="">---</option>
+                            <option value="1">Excel</option>
+                            <option value="2">Word</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select the export format
+                        </div>
+                    </div>
+                    <table class="none" id="listableqb">
+                        <thead>
+                        <tr>
+                            <th scope="col">Nº</th>
+                            <th scope="col">TYPE QUESTION NAME</th>
+                            <th scope="col">DESCRIPTION</th>
+                            <th scope="col">CREATE DATE</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="dom_tableTypesQuestions in tableTypesQuestions">
+                            <td> {{$index + 1}} </td>
+                            <td>{{dom_tableTypesQuestions.group_name}}</td>
+                            <td>{{dom_tableTypesQuestions.group_description}}</td>
+                            <td>{{dom_tableTypesQuestions.date_registration_group.split("T")[0]}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-danger boder-personalice"
+                            ng-click="closeModalQB(formExportsClass)">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-sm btn-primary boder-personalice"
+                            ng-disabled="formExportsClass.$invalid">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--end: modal para exportar los datos a formato word o excel-->
+
+<div class="m-4">
+    <div class="page-title d-flex flex-column me-5">
+        <!--begin::Title-->
+        <h5 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">Question bank</h5>
+        <!--end::Title-->
+        <!--begin::Breadcrumb-->
+        <ul class="breadcrumb fw-bold fs-7 small">
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">
+                <a href="app.html#!/home" class="text-muted text-hover-primary">Home</a>
+            </li>
+            <!--end::Item-->
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">Question Bank</li>
+            <!--end::Item-->
+        </ul>
+        <!--end::Breadcrumb-->
+    </div>
+    <!--begin: lista de tipos de preguntas-->
+    <div class="p-4 border rounded bg-white" style="max-height: 75vh">
+
+        <div class="">
+            <!-- Nav pills -->
+            <ul class="nav nav-pills tabNavQ" role="tablist">
+                <li class="nav-item navItemQ">
+                    <a class="nav-link active" data-toggle="pill" ng-click="showTab('questions','categories')">Questions</a>
+                </li>
+                <li class="nav-item navItemQ">
+                    <a class="nav-link" data-toggle="pill" ng-click="showTab('categories', 'questions')">Categories</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div id="questions" class="tab-pane active">
+                    <div ng-show="!viewList" class="text-center w-100">
+                        <h2 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">Welcome!</h2>
+                        <p class="text-gray-800 fs-4 fw-bold mb-10">There are not question added yet.
+                            <br>Kickstart your CRM by adding a your first question </p>
+                        <button class="btn boton-primario" ng-click="openModalAddQuestion()"> Add Question</button>
+
+                        <div class="text-center px-4">
+                            <img class="mw-100" alt="" src="resources/img/img-app/newObject.png" width="380">
+                        </div>
+                    </div>
+
+                    <div ng-show="viewList">
+                        <div class="headerpro">
+                            <div class="float-right">
+                                <div class="flex-column" style="letter-spacing: 0.5rem;">
+                                    <button class="btn btn-primary rounded btn-sm" ng-show="countRowsSelected === 0"
+                                            ng-click="loadQuestions()">
+                                        <i class="fas fa-chevron-circle-down"></i> Load all questions
+                                    </button>
+                                    <button class="btn boton-primario-dos btn-sm" ng-show="countRowsSelected === 0"
+                                            ng-click="openModalExport()">
+                                        <i class="fas fa-file-export"></i> Export
+                                    </button>
+                                    <button class="btn boton-primario btn-sm" ng-click="openModalAddQuestion()"
+                                            ng-show="countRowsSelected === 0">
+                                        Add Question
+                                    </button>
+                                    <span class="text-dark mr-2 small" ng-show="countRowsSelected > 0"
+                                          style="letter-spacing: normal">
+                        {{countRowsSelected}} Selected </span>
+                                    <button class="btn btn-danger btn-sm boder-personalice" ng-show="countRowsSelected > 0"
+                                            ng-click="deleteAllSelected()">
+                                        Delete Selected
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col col-xl-3 col-md-6 p-0">
+                                    <div class="form-group">
+                                        <select ng-model="selectQG" name="selectQG" class="form-control"
+                                                ng-options="questionBank.id_questiongroup  as questionBank.group_name
+                                    for questionBank in tableTypesQuestions"
+                                                ng-change="changeQuestionsBank()">
+                                            <option value="" selected> Select Question bank</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col col-xl-3 col-md-6 p-0 ml-3">
+                                    <div class="form-group">
+                                        <select ng-model="selectQT" name="selectQT" class="form-control"
+                                                ng-options="questionType.id_categorie  as questionType.name_categorie
+                                    for questionType in tableQuestionType"
+                                                ng-change="changeQuestionsType()">
+                                            <option value="" selected> Select Question type</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col col-xl-3 col-md-6 p-0 ml-3">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Search question"
+                                               ng-model="searchPeriod" name="searchPeriod">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive-xl table-bordered border rounded scroll" ng-show="tableQuestion.length > 0"
+                             style="min-height: 12vh; max-height: 61vh">
+                            <table class="table table-striped table-sm small rounded mb-0">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">
+                                        <div class="custom-control custom-checkbox">
+                                            <input ng-model="periodAll"
+                                                   type="checkbox" class="custom-control-input" id="periodAllId"
+                                                   ng-click="selectedAllPeriod()">
+                                            <label class="custom-control-label" for="periodAllId"></label>
+                                        </div>
+                                    </th>
+                                    <th scope="col">Nº</th>
+                                    <th scope="col"> QUESTION BANK</th>
+                                    <th> QUESTION TYPE</th>
+                                    <th scope="col">QUESTION</th>
+                                    <th scope="col">DESCRIPTION</th>
+                                    <th scope="col">CREATE DATE</th>
+                                    <th scope="col" class="text-right">ACTION</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="dom_tableQuestion in tableQuestion">
+                                    <td>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input"
+                                                   id="{{'check_' + dom_tableQuestion.id_questiongroup}}"
+                                                   ng-click="selectedRowDelete(dom_tablePeriod.id_period)">
+                                            <label class="custom-control-label"
+                                                   for="{{'check_' + dom_tableQuestion.id_questiongroup}}"></label>
+                                        </div>
+                                    </td>
+                                    <td> {{$index + 1}}</td>
+                                    <td> {{dom_tableQuestion.group_name}}</td>
+                                    <td> {{dom_tableQuestion.name_categorie}}</td>
+                                    <td class="col-3">{{dom_tableQuestion.name_question}}</td>
+                                    <td class="col-3">{{dom_tableQuestion.description_question}}</td>
+                                    <td>{{dom_tableQuestion.date_update_question.split("T")[0]}}</td>
+                                    <td class="text-right">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-actions btn-sm boder-personalice dropdown-toggle"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false"
+                                                    id="{{'btn_' + dom_tableQuestion.id_questiongroup}}">
+                                                Actions
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right shadow"
+                                                 aria-labelledby="{{'btn_' + dom_tableQuestion.id_questiongroup}}">
+                                                <button class="dropdown-item" ng-click="selectedRow(dom_tableTypesQuestions)">
+                                                    <i class="fas fa-pen-alt"></i> Update
+                                                </button>
+                                                <button class="dropdown-item"
+                                                        ng-click="viewQuestion(dom_tableQuestion)">
+                                                    <i class="far fa-eye"></i> View
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div ng-show="tableQuestion.length === 0" class="p-4 text-center">
+                            <h5 class="font-weight-bold text-danger"> There is no record of questions with the filters
+                                applied. </h5>
+                            <img class="mw-100" alt="" src="resources/img/img-app/newObject.png" width="400">
+                        </div>
+                    </div>
+                </div>
+                <div id="categories" class="tab-pane">
+                    <div ng-show="tableTypesQuestions.length === 0" class="text-center w-100">
+                        <h2 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">Welcome!</h2>
+                        <p class="text-gray-800 fs-4 fw-bold mb-10">There are not question bank added yet.
+                            <br>Kickstart your CRM by adding a your first question bank</p>
+                        <button class="btn boton-primario" ng-click="openModalAddTypeQuestion()"> Add Question Bank</button>
+
+                        <div class="text-center px-4">
+                            <img class="mw-100" alt="" src="resources/img/img-app/newObject.png" width="380">
+                        </div>
+                    </div>
+
+                    <div ng-show="tableTypesQuestions.length > 0">
+                        <div class="headerpro">
+                            <div class="float-right">
+                                <div class="flex-column" style="letter-spacing: 0.5rem;">
+                                    <button class="btn boton-primario-dos btn-sm" ng-show="countRowsSelected === 0"
+                                            ng-click="openModalExportQB()">
+                                        <i class="fas fa-file-export"></i> Export
+                                    </button>
+                                    <button class="btn boton-primario btn-sm" ng-click="openModalAddTypeQuestion()"
+                                            ng-show="countRowsSelected === 0">
+                                        Add Category
+                                    </button>
+                                    <span class="text-dark mr-2 small" ng-show="countRowsSelected > 0"
+                                          style="letter-spacing: normal">
+                        {{countRowsSelected}} Selected </span>
+                                    <button class="btn btn-danger btn-sm boder-personalice" ng-show="countRowsSelected > 0"
+                                            ng-click="deleteAllSelected()">
+                                        Delete Selected
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col col-xl-3 col-md-6 p-0">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search type question"
+                                           ng-model="searchPeriod" name="searchPeriod">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive-xl table-bordered border rounded scroll" style="min-height: 12vh; max-height: 61vh">
+                            <table class="table table-striped table-sm small rounded mb-0">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">
+                                        <div class="custom-control custom-checkbox">
+                                            <input ng-model="periodAll"
+                                                   type="checkbox" class="custom-control-input" id="periodAllId"
+                                                   ng-click="selectedAllQB()">
+                                            <label class="custom-control-label" for="periodAllId"></label>
+                                        </div>
+                                    </th>
+                                    <th scope="col">Nº</th>
+                                    <th scope="col">TYPE QUESTION NAME</th>
+                                    <th scope="col">DESCRIPTION</th>
+                                    <th scope="col">CREATE DATE</th>
+                                    <th scope="col" class="text-right">ACTION</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="dom_tableTypesQuestions in tableTypesQuestions">
+                                    <td>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input"
+                                                   id="{{'check_' + dom_tableTypesQuestions.id_questiongroup}}"
+                                                   ng-click="selectedRowDelete(dom_tableTypesQuestions.id_questiongroup)">
+                                            <label class="custom-control-label"
+                                                   for="{{'check_' + dom_tableTypesQuestions.id_questiongroup}}"></label>
+                                        </div>
+                                    </td>
+                                    <td> {{$index + 1}} </td>
+                                    <td>{{dom_tableTypesQuestions.group_name}}</td>
+                                    <td>{{dom_tableTypesQuestions.group_description}}</td>
+                                    <td>{{dom_tableTypesQuestions.date_registration_group.split("T")[0]}}</td>
+                                    <td class="text-right   ">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-actions btn-sm boder-personalice dropdown-toggle"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false"
+                                                    id="{{'btn_' + dom_tableTypesQuestions.id_questiongroup}}">
+                                                Actions
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right shadow"
+                                                 aria-labelledby="{{'btn_' + dom_tableTypesQuestions.id_questiongroup}}">
+                                                <button class="dropdown-item" ng-click="selectedUpdate(dom_tableTypesQuestions)">
+                                                    <i class="fas fa-pen-alt"></i> Update
+                                                </button>
+                                                <button class="dropdown-item" ng-click="selectedView(dom_tableTypesQuestions)">
+                                                    <i class="far fa-eye"></i> View
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

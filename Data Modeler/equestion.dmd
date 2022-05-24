@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="equestion" id="E843326A-2745-1680-3512-FE0D3E419A02" version="3.5">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-28 20:04:33 UTC</createdTime>
+<ownerDesignName>equestion</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>E843326A-2745-1680-3512-FE0D3E419A02</designId>
+</OSDM_Design>

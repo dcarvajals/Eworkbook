@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="E3FD3AAB-C5A8-1C6D-5F37-3F6C4078A943" containerWithKeyObject="A577F65E-2D2D-AC54-9326-2D4B6158E4A2" localFKIndex="81182234-D954-A048-6A38-C94CF7121513" name="evaluation_questions_evaluation_FK">
+<createdBy>geova</createdBy>
+<createdTime>2021-10-30 17:39:51 UTC</createdTime>
+<generatorID>DDD47F37-C8C5-9F36-1D40-2FF1E9223458</generatorID>
+<ownerDesignName>equestion</ownerDesignName>
+<referredTableLongName>evaluation</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>D9429ADC-47C2-9FA4-44EF-8A8BD11640BA</referredTableID>
+<keyObject>23004AAC-FC27-C2D5-1403-B5E7AFA177FC</keyObject>
+<referredKeyID>23004AAC-FC27-C2D5-1403-B5E7AFA177FC</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_evaluation</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
